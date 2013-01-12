@@ -1,0 +1,8 @@
+﻿@model LinkInks.Models.Entities.Chapter
+
+<div id="viewChapterRow_@(Model.Index)" class="chapterRowStyle">
+    <label class="chapterIndexStyle">@(Model.Index)</label>
+    <div class="chapterTitleStyle">
+        @Html.ActionLink(Model.Title, "Read", "Chapter", new { id = Model.ChapterId }, null)
+    </div>
+</div>

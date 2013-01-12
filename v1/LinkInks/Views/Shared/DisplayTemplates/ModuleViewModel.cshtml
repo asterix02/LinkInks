@@ -1,0 +1,50 @@
+﻿@model LinkInks.Models.ChapterViewModels.ModuleViewModel
+
+<div id="moduleFrame_@(Model.ModuleId)" class="moduleFrameStyle">
+
+    @if ((Model.Module.Discussions != null) && (Model.Module.Discussions.Count > 0))
+    {
+        // Existing discussions should appear more prominently
+        if (ViewData["pageSide"] == "left")
+        {
+            <div class="tapeFrameLeftStyle">
+                <div id="discussionTab_@(Model.ModuleId)" class="tabLeftStyle"></div>
+                <div id="discussionTape_@(Model.ModuleId)" class="tapeLeftStyle">...</div>
+            </div>
+        
+            <div class="moduleContentLeftStyle">@Html.DisplayFor(moduleViewModel => Model.Content)</div>
+        }
+        else
+        {
+            <div class="moduleContentRightStyle">@Html.DisplayFor(moduleViewModel => Model.Content)</div>
+
+            <div class="tapeFrameRightStyle">
+                <div id="discussionTape_@(Model.ModuleId)" class="tapeRightStyle">...</div>
+                <div id="discussionTab_@(Model.ModuleId)" class="tabRightStyle"></div>
+            </div>
+        }
+    }
+    else
+    {
+        // Sections without any discussions should have a more subtle tape
+        if (ViewData["pageSide"] == "left")
+        {
+            <div class="addTapeFrameLeftStyle">
+                <div id="discussionTab_@(Model.ModuleId)" class="tabLeftStyle"></div>
+                <div id="discussionTape_@(Model.ModuleId)" class="addTapeLeftStyle">+</div>
+            </div>
+        
+            <div class="moduleContentLeftStyle">@Html.DisplayFor(moduleViewModel => Model.Content)</div>
+        }
+        else
+        {
+            <div class="moduleContentRightStyle">@Html.DisplayFor(moduleViewModel => Model.Content)</div>
+
+            <div class="addTapeFrameRightStyle">
+                <div id="discussionTape_@(Model.ModuleId)" class="addTapeRightStyle">+</div>
+                <div id="discussionTab_@(Model.ModuleId)" class="tabRightStyle"></div>
+            </div>
+        }
+    }
+
+</div>

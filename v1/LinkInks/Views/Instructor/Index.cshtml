@@ -1,0 +1,50 @@
+﻿@model LinkInks.Models.InstructorViewModels.IndexViewModel
+           
+@{
+    ViewBag.Title = Model.InstructorUserName + "'s LinkInks Homepage";
+}
+
+<customHeader>
+    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+@{ var stockCoverPhoto = Url.Content("~/Content/themes/base/images/book_cover.png"); }
+
+<section id="bookThumbnailsSection">
+    <div id="userGreetingSection">
+        <h1 id="userGreeting">How many will you help learn today?</h1>
+        @Html.ActionLink("Create New Course", "Create", "Course", null, new { id = "greetingLink" })
+    </div>
+
+    <div id="bookThumbnails">
+    @foreach (var course in Model.Courses)
+    {
+        var index = course.CourseId;
+        <div id="bookThumbnailControl_@(index)" class="instructorBookThumbnailStyle">
+            <div id="bookThumbnailPhoto_@(index)">
+                <img class="bookCover" src="@stockCoverPhoto" alt="@course.Book.Title"/>
+                @if (!String.IsNullOrEmpty(course.Book.CoverPhoto))
+                {
+                    var imageSource = Url.Content(course.Book.CoverPhoto);
+                    <img class="bookCoverPhotoStyle" src="@imageSource" alt="@course.Book.Title"/>
+                }
+            </div>
+
+            <div id="bookThumbnailTitle@(index)">
+                <h4>@course.Title</h4>
+            </div>
+            <div id="bookReadAction@(index)" class="bookThumbnailActionsStyle">
+                @Html.ActionLink("View Book", "Read", "Book", new { id = course.Book.BookId }, null)
+            </div>
+            <div id="bookDetailsAction@(index)" class="bookThumbnailActionsStyle">
+                @Html.ActionLink("View Students", "Details", "Course", new { id = course.CourseId }, null)
+            </div>
+            <div id="bookWaitlistAction@(index)" class="bookThumbnailActionsStyle">
+                @Html.ActionLink("View Waitlist", "Waitlist", "Course", new { id = course.CourseId }, null)
+            </div>
+
+        </div>
+    }
+
+    </div>
+</section>

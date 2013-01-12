@@ -1,0 +1,87 @@
+﻿@model LinkInks.Models.StudentViewModels.DetailsViewModel
+
+@{
+    ViewBag.Title = Model.StudentUserName + "'s LinkInks Details Page";
+}
+
+<h2>@(Model.StudentUserName)</h2>
+
+@if (Model.RegisteredCourses.Count > 0)
+{
+    <table id="registeredCourses">
+        <tr>
+            <th>Enrolled Course</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var course in Model.RegisteredCourses)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>
+                    @Html.ActionLink("Details",     "CourseDetails",    new { id = course.CourseId }) |
+                    @Html.ActionLink("Drop",        "CourseDrop",       new { id = course.CourseId }) 
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>You are currently not registered for any courses.</h4>
+}
+
+<br />
+
+@if (Model.WaitlistedCourses.Count > 0)
+{
+    <table id="waitlistedCourses">
+        <tr>
+            <th>Pending Approval</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var course in Model.WaitlistedCourses)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>
+                    @Html.ActionLink("Details",     "CourseDetails",    new { id = course.CourseId }) |
+                    @Html.ActionLink("Drop",        "CourseDrop",       new { id = course.CourseId }) 
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>You are currently not waitlisted for any courses.</h4>
+}
+
+<br />
+
+@if (Model.AvailableCourses.Count > 0)
+{
+    <table id="availableCourses">
+        <tr>
+            <th>Available Course</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var course in Model.AvailableCourses)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>
+                    @Html.ActionLink("Details", "CourseDetails",    new { id = course.CourseId }) |
+                    @Html.ActionLink("Enroll",  "CourseEnroll",     new { id = course.CourseId }) 
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>No other courses are available for registration.</h4>
+}
+
+<p>
+    @Html.ActionLink("Back to home page", "Index")
+</p>

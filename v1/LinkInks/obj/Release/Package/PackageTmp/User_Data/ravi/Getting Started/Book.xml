@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book title="Jumpstart Your Experience" coverPhoto="LinkInks://Getting Started/jumpstart_cover.jpg">
+  <chapter id="1" title="Introduction" pageCount="4">
+    <page pageNumber="1">
+      <text title="Introduction" id="{25196275-0E38-476D-A327-3038B917B5D5}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. <b>This is a long paragraph.</b> This is a long paragraph.
+        <br />
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+
+      <a href="LinkInks://Getting Started/Calvin_and_Hobbes_Original.png" alt="Calvin and Hobbes"
+         id="{C7AC5679-FE04-4C76-A9A8-453FEF4ED673}">My favorite comic</a>
+
+      <video src="LinkInks://Getting Started/demo.webm" id="{0D3A4DA6-A754-48D3-B640-9AAE71FFA86D}">
+        Sample video
+      </video>
+
+    </page>
+
+    <page pageNumber="2">
+      <img src="http://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png"
+           alt="Calvin and Hobbes" id="{65D73904-FF51-41E4-99A5-E1B25CBA064D}">
+        Calvin and Hobbes
+      </img>
+
+      <text title="Page 2 Introduction" id="{2F03672D-BFA1-4252-8917-94833D0F5485}">
+        Welcome to the new class! It's exciting to have you all here.
+      </text>
+
+      <text title="Page 2 Section 3" id="{09A1FEEE-CD1D-4C99-9621-EC9BCC472C5F}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+    </page>
+
+    <page pageNumber="3">
+      <text title="Introduction" id="{F40BB58B-CF9E-4A98-AF56-31F17CE4A9C9}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+
+      <a href="LinkInks://Getting Started/Calvin_and_Hobbes_Original.png" alt="Calvin and Hobbes"
+         id="{9439CC53-5504-44E4-AB27-23F1C3F22290}">My favorite comic</a>
+
+      <video src="LinkInks://Getting Started/demo.webm" id="{C5BCC194-54A0-4539-AF13-4D0090407206}">
+        Sample video
+      </video>
+
+    </page>
+
+    <page pageNumber="4">
+      <question id="{59666E27-3619-4870-B01C-26D6295662F2}" points="0">
+        <questionText>
+          This is a sample multiple-choice question that will not be graded.
+        </questionText>
+        <answerChoice>
+          Choice 1: Blah blah</answerChoice>
+        <answerChoice>
+          Choice 2: Blah blah</answerChoice>
+        <correctAnswer>Choice 2: Blah blah</correctAnswer>
+      </question>
+    </page>
+  </chapter>
+  
+  <chapter id="2" title="Main Content" pageCount="2">
+    <page pageNumber="1">
+      <text title="Introduction" id="{DA4DCA0A-ED00-4A7F-A23E-52E6686569BE}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+
+      <a href="LinkInks://Getting Started/Calvin_and_Hobbes_Original.png" alt="Calvin and Hobbes"
+         id="{1851B289-9740-4ACD-B527-E4A25DF500B5}">My favorite comic</a>
+
+      <video src="LinkInks://Getting Started/demo.webm" id="{375CB56E-6851-462B-9501-62EC022F5731}">
+        Sample video
+      </video>
+
+    </page>
+
+    <page pageNumber="2">
+      <img src="http://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png"
+           alt="Calvin and Hobbes" id="{0CED8D99-51A1-49E3-8E93-E359DC7328A0}">
+        Calvin and Hobbes
+      </img>
+
+      <text title="Page 2 Introduction" id="{747D005D-1BA8-406E-9CEA-C74F33778392}">
+        Welcome to the new class! It's exciting to have you all here.
+      </text>
+
+      <text title="Page 2 Section 3" id="{E9EA05EE-CF89-4E01-9761-04BCC94CF1A8}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+    </page>
+  </chapter>
+  <chapter id="3" title="Conclusion" pageCount="2">
+    <page pageNumber="1">
+      <text title="Introduction" id="{802A8C5E-7B04-414C-8524-018754EBCBA3}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+
+      <a href="LinkInks://Getting Started/Calvin_and_Hobbes_Original.png" alt="Calvin and Hobbes"
+         id="{47466A81-8D9A-4948-9B3D-FC552F5C217E}">My favorite comic</a>
+
+      <video src="LinkInks://Getting Started/demo.webm" id="{C4A5256C-2D07-41B1-AA15-BDE96FB65E42}">
+        Sample video
+      </video>
+
+    </page>
+
+    <page pageNumber="2">
+      <img src="http://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png"
+           alt="Calvin and Hobbes" id="{9976E675-297C-4DA4-A6F1-F72E9969EFE4}">
+        Calvin and Hobbes
+      </img>
+
+      <text title="Page 2 Introduction" id="{C1BCCB64-0E99-42D5-8995-25261BF70C03}">
+        Welcome to the new class! It's exciting to have you all here.
+      </text>
+
+      <text title="Page 2 Section 3" id="{E20B901F-4CA1-43E2-AA23-DE7253B4CC53}">
+        Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+        <br />
+        This is the last line in the paragraph.
+      </text>
+    </page>
+  </chapter>
+</book>

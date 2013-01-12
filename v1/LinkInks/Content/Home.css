@@ -1,0 +1,66 @@
+﻿#bookThumbnailsSection
+{
+    display:        inline;
+    float:          left;
+    margin-top:     30px;
+}
+
+#userGreetingSection
+{
+    float:          left;
+    margin:         0px 75px 0px 75px;
+    text-align:     center;
+    width:          260px;
+}
+
+#userGreeting
+{
+    font-size:      3em;
+    font-weight:    normal;
+}
+
+#greetingLink
+{
+    color:          #777 !important;
+    font-size:      1em;
+    overflow:       hidden;
+    padding:        65px 0px 10px 0px;
+}
+
+#bookThumbnails
+{
+    float:          left;
+    padding-left:   25px;
+}
+
+.bookCover
+{
+    border-radius:  1px;
+    box-shadow:     0px 0px 2px 1px gray;
+    height:         150px;
+    width:          120px;
+}
+
+.bookCoverPhotoStyle
+{
+    height:         150px;
+    width:          110px;
+    
+    /* We need to position the photo on top of the cover */
+    position:       relative;
+    left:           -117px;
+}
+
+.studentBookThumbnailStyle
+{
+    display:        inline;
+    float:          left;
+    padding-top:    40px;
+}
+
+.instructorBookThumbnailStyle
+{
+    float:          left;
+    padding:        50px 0px 0px 0px;
+}
+

@@ -1,0 +1,44 @@
+﻿@model LinkInks.Models.ChapterViewModels.ReadViewModel
+
+@{
+    ViewBag.Title       = Model.Title;
+    ViewBag.HideHeader  = true;
+    ViewBag.HideFooter  = true;
+}
+
+<!-- Desk Control -->
+<div id="deskControl">
+  
+    <!-- Book Control -->
+    @using (Ajax.BeginForm("BookAsyncRequest", "Chapter", new AjaxOptions
+        {
+            HttpMethod          = "POST",
+            InsertionMode       = InsertionMode.Replace,
+            UpdateTargetId      = "bookControl",
+            LoadingElementId    = "bookAjaxLoader"
+        }))
+    {
+        <div id="bookControl">
+            @Html.Partial("_Book", Model)
+        </div>
+    } <!-- Book Control Close -->
+
+    <!-- Discussions Control -->
+    @using (Ajax.BeginForm("DiscussionsAsyncRequest", "Chapter", new AjaxOptions
+        {
+            HttpMethod          = "POST",
+            InsertionMode       = InsertionMode.Replace,
+            UpdateTargetId      = "discussionsControl",
+            LoadingElementId    = "discussionsAjaxLoader"
+        }))
+    {
+        <div id="discussionsControl">
+            @Html.Partial("_Discussions", new LinkInks.Models.ChapterViewModels.DiscussionsViewModel())
+        </div>
+    } <!-- Discussions Control Close -->
+
+</div> <!-- Desk Control Close -->
+
+ 
+<!-- Required for AJAX -->
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"  type="text/javascript"></script>

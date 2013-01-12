@@ -1,0 +1,34 @@
+﻿@model LinkInks.Models.AdministratorViewModels.IndexViewModel
+           
+@{
+    ViewBag.Title = Model.AdministratorUserName + "'s LinkInks Homepage";
+}
+
+<customHeader>
+    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+<section>
+@if (Model.Courses.Count > 0)
+{
+    <table id="allCourses">
+        <tr>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>
+                    @Html.ActionLink("Details",     "CourseDetails",    new { id = course.CourseId }) 
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>No courses in system.</h4>
+}
+</section>

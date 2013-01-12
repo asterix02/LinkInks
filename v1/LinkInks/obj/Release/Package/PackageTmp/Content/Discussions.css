@@ -1,0 +1,399 @@
+﻿/* Styles for discussions */
+.discussionsSlideoutStyle
+{
+    background:     transparent;
+    display:        none;
+    float:          left;
+    height:         670px;
+    overflow:       auto;
+}
+
+.discussionsSlideoutStyle::-webkit-scrollbar 
+{
+    width:          10px;
+}
+
+.discussionsSlideoutStyle::-webkit-scrollbar-track 
+{
+    border-radius:  5px;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+.discussionsSlideoutStyle::-webkit-scrollbar-thumb 
+{
+    -webkit-border-radius: 5px;
+    border-radius:  5px;
+    background:     #EEB077; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.discussionsSlideoutStyle::-webkit-scrollbar-thumb:window-inactive 
+{
+	background:     transparent;
+}
+
+.discussionStyle
+{
+    background:     #5E3612;
+    border-radius:  10px;
+    box-shadow:     0px 0px 3px 1px gray;
+    margin-left:    30px;
+    margin-right:   25px;
+    margin-bottom:  10px;
+    padding-bottom: 6px;
+}
+
+.discussionsHeaderStyle
+{
+    border-radius:  10px;
+    display:        block;
+    margin-left:    20px;
+    margin-right:   0px;
+    margin-bottom:  10px;
+    padding-left:   10px;
+}
+
+.discussionsHeaderStyle h1
+{
+    color:          #5E3612;
+    font-size:      1em;
+    font-weight:    normal;
+    line-height:    0em;
+    width:          100px;
+}
+
+.discussionHeaderActionsStyle
+{
+}
+
+.discussionsHeaderButtonStyle
+{
+    background:     transparent;
+    border:         none !important;
+    color:          #034af3 !important;
+    cursor:         pointer;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+    margin-top:     5px;
+    margin-bottom:  5px;
+    margin-left:    0px;
+    margin-right:   10px;
+    padding:        0px;
+    text-decoration: none !important;
+}
+
+.discussionsHeaderButtonStyle:hover
+{
+    color:          #AD5416 !important;
+}
+
+#newDiscussionControl
+{
+    background:     #5E3612;
+    border-radius:  10px;
+    box-shadow:		0px 0px 3px 1px gray;
+    color:          #FFF7EF;
+    display:        none;
+    line-height:    1.5em;
+    margin-left:    30px;
+    margin-right:   25px;
+    margin-bottom:  10px;
+    padding-bottom: 15px;
+}
+
+.newDiscussionStyle
+{
+    background:     #AEC72F;
+    color:          #FFF7EF;
+    margin-top:     15px;
+    padding-left:   10px;
+}
+
+.newDiscussionTextStyle
+{
+    background:     transparent !important;
+    border:         1px;
+    border-color:   #BB8D60 !important;
+    border-radius:  3px;
+    color:          #FFFFFF !important; 
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+    font-size:      0.85em !important;   
+    margin-bottom:  6px;
+    margin-top:     10px;
+    text-decoration: none !important;
+    width:          90% !important;
+}
+
+.newDiscussionTextStyle::-webkit-input-placeholder {
+    color:          #EEEEEE;
+}
+
+.newDiscussionTextStyle:-moz-placeholder {  
+    color:          #EEEEEE;  
+}
+
+.newDiscussionActionsStyle
+{
+    padding-bottom: 8px;
+    padding-top:    6px;
+}
+
+.newDiscussionActionButtonStyle
+{
+    background:     transparent;
+    border:         none !important;
+    color:          #5E3612 !important;
+    cursor:         pointer;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+	margin-left:    0px;
+	margin-right:   10px;
+    padding:        0px;
+    text-decoration: none !important;    
+}
+
+.newDiscussionActionButtonStyle:hover
+{
+    color:          black !important;
+}
+
+.discussionOwnerStyle
+{
+    background:     #886744;
+    border-radius:  5px 5px 0px 0px;
+    color:          #EBFF00;
+    font-size:      1em;
+    padding-bottom: 6px;
+    padding-top:    6px;
+    padding-left:   10px;
+    padding-right:  10px;
+}
+
+.discussionTitleStyle
+{
+    color:          #FFF7EF;
+    font-size:      0.9em;
+    padding-bottom: 10px;
+    padding-top:    10px;
+    padding-left:   10px;
+    padding-right:  10px;
+}
+
+.discussionActionsStyle
+{
+    color:          #FFF7EF;
+    padding-bottom: 0px;
+    padding-top:    3px;
+    padding-left:   10px;
+    padding-right:  10px;
+}
+
+.discussionActionButtonStyle
+{
+    background:     transparent;
+    border:         none !important;
+    color:          #BB8D60 !important;
+    cursor:         pointer;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+	margin-left:    0px;
+	margin-right:   25px;
+    padding:        0px;
+    text-decoration: none !important;
+}
+
+.discussionActionButtonStyle:hover
+{
+    color:          #AEC72F !important;
+}
+
+.posts
+{
+    display:        none;
+    height:         auto;
+}
+
+.postOwnerStyle
+{
+    color:          #FFB800;
+    font-size:      1em;
+    padding-bottom: 5px;
+    padding-top:    10px;
+    padding-left:   30px;
+    padding-right:  30px;
+}
+
+.postContent
+{
+    color:          #FFF7EF;
+    font-size:      0.9em;
+    font-weight:    normal;
+    padding-bottom: 5px;
+    padding-left:   30px;
+    padding-right:  30px;
+}
+
+.newPostStyle
+{
+    background:     #AEC72F;
+    color:          #FFF7EF;
+    display:        none;
+    line-height:    1em;
+    margin-bottom:  10px;
+    padding-left:   10px;    
+}
+
+.newPostTextStyle
+{
+    background:     transparent !important;
+    border:         1px;
+    border-color:   #BB8D60 !important;
+    border-radius:  3px;
+    color:          #FFFFFF !important; 
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+    font-size:      0.85em !important;   
+    margin-bottom:  6px;
+    margin-top:     10px;
+    text-decoration: none !important;
+    width:          90% !important;
+}
+
+.newPostTextStyle::-webkit-input-placeholder {
+    color:          #EEEEEE;
+}
+
+.newPostTextStyle:-moz-placeholder {  
+    color:          #EEEEEE;  
+}
+
+.newPostActionsStyle
+{
+    padding-bottom: 8px;
+    padding-top:    6px;
+}
+
+.newPostActionButtonStyle
+{
+    background:     transparent;
+    border:         none !important;
+    color:          #5E3612 !important;
+    cursor:         pointer;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+	margin-left:    0px;
+	margin-right:   10px;
+    padding:        0px;
+    text-decoration: none !important;
+}
+
+.newPostActionButtonStyle:hover
+{
+    color:          black !important;
+}
+
+.answerChoiceGroupPostStyle
+{
+    border:         none;
+    background:     #AEC72F;
+    color:          #FFF7EF;
+    line-height:    2em;
+    margin-top:     20px;
+    margin-bottom:  5px;
+    padding-top:    10px;
+
+    /* Override webkit defaults */    
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 10px;
+    -webkit-padding-start: 10px;
+}
+
+.answerChoiceRadioStyle
+{
+    vertical-align: middle;
+}
+
+.answerChoicePostStyle
+{
+    border:         none;
+    background-color: transparent;
+    color:          #FFF7EF;
+    height:         auto;
+    font-size:      .85em;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+    font-weight:    normal;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+    vertical-align: middle;
+}
+
+.answerActionButtonStyle
+{
+    background:     transparent;
+    border:         none !important;
+    color:          #BB8D60 !important;
+    cursor:         pointer;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+	margin-left:    10px;
+	margin-right:   25px;
+    padding:        0px;
+    text-decoration: none !important;
+}
+
+.answerActionButtonStyle:hover
+{
+    color:          #AEC72F !important;
+}
+
+
+#discussionsAjaxLoader
+{
+    color:          #FF7900;
+    display:        none;
+    font-family:    "Open Sans", Helvetica, Sans-Serif;
+	font-size:		0.85em;
+    margin-left:    30px;
+}
+
+#noConversationsLabel
+{
+    color:          #FF7900;
+    font-size:      1.0em;
+    font-weight:    normal;
+    padding-bottom: 5px;
+    padding-left:   30px;
+    padding-right:  30px;
+}
+
+.answeredSectionStyle
+{
+    padding:        0px 10px 0px 10px;
+}
+
+.answerMessageGroupStyle
+{
+    border:         none;
+    background:     #AEC72F;
+    color:          #FFF7EF;
+    padding:        10px;
+
+    /* Override webkit defaults */    
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 10px;
+    -webkit-padding-start: 10px;
+}
+
+.answerMessageStyle
+{
+    color:          white;
+    font-size:      0.95em;
+}
+
+.answerMessageChoicesStyle
+{
+    color:          #803800;
+    font-size:      0.85em;
+}

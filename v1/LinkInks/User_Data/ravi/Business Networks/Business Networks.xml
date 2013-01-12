@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<chapter id="1">
+  <page pageNumber="1">
+    <text title="Introduction" moduleId="{25196275-0E38-476D-A327-3038B917B5D5}">
+      Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+      Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+      <br />
+      Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+      Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+      <br />
+      This is the last line in the paragraph.
+    </text>
+
+    <a href="LinkInks://Calvin_and_Hobbes_Original.png" alt="Calvin and Hobbes" 
+       moduleId="{C7AC5679-FE04-4C76-A9A8-453FEF4ED673}">My favorite comic</a>
+
+    <video src="demo.mp4" moduleId="{0D3A4DA6-A754-48D3-B640-9AAE71FFA86D}">
+      Sample video
+    </video>
+  
+  </page>
+
+  <page pageNumber="2">
+    <img src="http://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png" 
+         alt="Calvin and Hobbes" moduleId="{65D73904-FF51-41E4-99A5-E1B25CBA064D}">
+      Calvin and Hobbes
+    </img>
+  
+    <text title="Page 2 Introduction" moduleId="{2F03672D-BFA1-4252-8917-94833D0F5485}">
+      Welcome to the new class! It's exciting to have you all here. 
+    </text>
+
+    <text title="Page 2 Section 3" moduleId="{09A1FEEE-CD1D-4C99-9621-EC9BCC472C5F}">
+      Welcome to the new class! It's exciting to have you all here. This is a long paragraph. This is a long paragraph.
+      <br />
+      This is the last line in the paragraph.
+    </text>
+  </page>
+</chapter>

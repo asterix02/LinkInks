@@ -1,0 +1,318 @@
+﻿#bookOutline
+{
+    background: 	white url('../../Content/themes/base/images/book.png') no-repeat;
+    background-color: transparent;
+    border-radius:	7px;
+    box-shadow:		0px 0px 12px 4px gray;
+    float:          left;
+    font-size:      0.85em;
+    height:			670px;
+    overflow: 		hidden;
+    padding: 		0px;
+    width:			1100px;
+}
+
+#chapterHeader
+{
+    display:        table;
+    font-size:		1em;
+    margin:         40px 70px 0px 70px;
+    overflow: 		hidden;
+    width:          960px;
+}
+
+#chapterControls
+{
+    color:          #66775C;
+    display:        table-cell;
+    font-size:		1em;
+    font-weight:    normal;
+    height:         1.5em;
+    overflow: 		hidden;
+    padding:        0px 2px 0px 0px;
+    text-align:     right;
+    width:          415px;
+}
+
+#chapterTitle
+{
+    color:          #66775C;
+    display:        table-cell;
+    font-size:		1em;
+    font-weight:    normal;
+    overflow: 		hidden;
+    padding-left:   2px;
+    text-overflow:  ellipsis;
+    width:          415px;
+    
+    -webkit-margin-after: 0px;
+    -webkit-margin-before: 0px;
+}
+
+#bookModulesFrame
+{
+    height:         560px;
+    min-height:     560px;
+    max-height:     560px;
+    margin:         5px 0px 0px 0px;
+    overflow:       hidden;
+}
+
+#leftPage, #rightPage
+{
+    position:       relative;
+    width:          550px;
+    height:         550px;
+}
+
+#rightPage
+{
+    left:           550px;
+    top:            -550px;
+}
+
+.leftPageContentStyle, .rightPageContentStyle
+{
+	background-color: transparent;
+    display:        table;
+  	height:			auto; 
+	margin-right:   60px;
+  	max-height:     540px !important; 	
+	overflow: 		hidden;
+	width:          550px;
+}
+
+.rightPageContentStyle
+{
+	margin-left:    0px;
+	margin-right:   0px;
+}
+
+.moduleTitleStyle
+{
+    background:     none;
+    color:          #4E9B00;
+	font-size:		1.5em !important;
+    font-weight:    normal;
+    padding-top:    15px;
+	overflow: 		hidden;
+	text-align:     left;
+    width:          415px;
+
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+
+.moduleFrameStyle
+{
+    display:        table-row;
+    overflow:       visible;
+    width:          480px;
+}
+
+.moduleContentLeftStyle, .moduleContentRightStyle
+{
+    display:        table-cell;
+    text-align:     center;
+}
+
+.moduleContentLeftStyle
+{
+    padding:        0px 60px 0px 5px;
+}
+
+.moduleContentRightStyle
+{
+    padding:        0px 0px 0px 70px;
+}
+
+.textContentStyle
+{
+    display:        table-cell;
+	font-size:		1em;
+    font-weight:    normal;
+	line-height:	2em;
+    max-height:     490px;
+    max-width:      415px;
+    text-align:     justify;
+    width:          415px;
+}
+
+.videoTitleStyle
+{
+    color:          #4E9B00;
+	font-size:		1.1em;
+    font-weight:    normal;
+    margin-top:     20px;
+}
+
+.videoContentStyle
+{
+	border:         2px solid !important;
+	border-radius:	5px;
+	height:			200px;
+}
+
+.videoContentStyle::-moz-full-screen 
+{
+  	width: 			100%;
+}
+
+.videoContentStyle::-webkit-full-screen 
+{
+  	width: 			100%;
+}
+
+.pictureContentStyle
+{
+    max-width:      415px !important;
+	max-height:     200px !important;
+}
+
+.pictureCaptionStyle
+{
+    color:          #CCC !important;
+    margin-top:     10px;
+}
+
+.linkContentStyle
+{
+    line-height:    4em;
+    margin:         5px 0px 10px 0px;
+    vertical-align: middle;
+}
+
+.questionTextStyle
+{
+	font-size:		1em;
+    font-weight:    normal;
+	line-height:	2em;
+    max-height:     490px;
+    max-width:      415px;
+    text-align:     justify;
+    width:          415px;
+}
+
+.answerChoiceStyle
+{
+	font-size:		1em;
+    font-weight:    normal;
+	line-height:	2em;
+    max-height:     490px;
+    max-width:      415px;
+    text-align:     justify;
+    width:          415px;
+}
+
+#chapterFooter
+{
+    width:          1100px;
+}
+
+#previousPageButton
+{
+    display:        inline;
+    position:       relative;
+    left:           6%;
+}
+
+#nextPageButton
+{
+    display:        inline;
+    position:       relative;
+    left:           77%;
+}
+
+#leftPageNumber
+{
+    color:          #A7A7A7;
+    margin:         5px;
+
+    display:        inline;
+    position:       relative;
+    left:           18%;
+}
+
+#rightPageNumber
+{
+    color:          #A7A7A7;
+    margin:         5px;
+
+    display:        inline;
+    position:       relative;
+    left:           62%;
+}
+
+
+/* Discussion Tape Styles */
+
+.tapeFrameLeftStyle, .tapeFrameRightStyle, .addTapeFrameLeftStyle, .addTapeFrameRightStyle
+{
+    display:        table-cell;
+    height:         60px;
+    opacity:        0.4;
+    overflow:       hidden;
+    padding-left:   15px;
+    vertical-align: middle;
+    width:          50px;
+
+    transition:     all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -o-transition:  all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+}
+
+.tapeFrameLeftStyle:hover, .tapeFrameRightStyle:hover, .addTapeFrameLeftStyle:hover, .addTapeFrameRightStyle:hover
+{
+    opacity:        0.9;
+}
+
+.addTapeFrameLeftStyle, .addTapeFrameRightStyle
+{
+    color:          #5E3612;
+    font-weight:    bold;
+    opacity:        0.1;
+}
+
+.tapeLeftStyle, .tapeRightStyle, .addTapeLeftStyle, .addTapeRightStyle
+{
+    background:     #EBE4DC;
+    display:        inline;
+    float:          left;
+    height:         60px;
+    overflow:       hidden;
+    text-align:     center;
+    width:          45px;
+}
+
+.tapeRightStyle, .addTapeRightStyle
+{
+    margin-left:    -14px;
+}
+
+.tapeLeftStyle:hover, .tapeRightStyle:hover, .addTapeLeftStyle:hover, .addTapeRightStyle:hover
+{
+    cursor:         pointer;
+    opacity:        0.8;
+}
+
+.tabLeftStyle, .tabRightStyle
+{
+    background:     #5E3612;
+    display:        inline;
+    float:          left;
+    height:         60px;
+    overflow:       hidden;
+    width:          5px;
+}
+
+.tabLeftStyle
+{
+    border-radius:  7px 0px 0px 7px;
+}
+
+.tabRightStyle
+{
+    border-radius:  0px 7px 7px 0px;
+}
+

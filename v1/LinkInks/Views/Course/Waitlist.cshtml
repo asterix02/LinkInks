@@ -1,0 +1,81 @@
+﻿@model LinkInks.Models.CourseViewModels.DetailsViewModel
+
+@{
+    ViewBag.Title = @Model.Course.Title + " (LinkInks Course)";
+}
+
+<h2>@Model.Course.Title</h2>
+
+<fieldset>
+    <legend>Course Details</legend>
+
+    <b>Course Title</b>
+    <div class="display-field">@Html.DisplayFor(model => model.Course.Title)</div>
+    <br />
+    <b>Course Credits</b>
+    <div class="display-field">@Html.DisplayFor(model => model.Course.Credits)</div>
+</fieldset>
+
+<br />
+
+@if (Model.UseInstructorView)
+{
+    <h3>Students waiting for instructor approval</h3>
+    if (Model.WaitlistedStudents.Count > 0)
+    {
+        <table id="waitlistedClass">
+            <tr>
+                <th>Student</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var studentUserName in Model.WaitlistedStudents)
+            {
+                <tr>
+                    <td>@studentUserName</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Student", new { id = studentUserName }, null) |
+                        @Html.ActionLink("Allow", "AddStudentToCourse", "Instructor", new { courseId = Model.Course.CourseId, studentUserName = studentUserName }, null) 
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <b>No students have been waitlisted for this course</b>
+    }
+
+    <br />
+    <br />
+    
+    <h3>Enrolled Class</h3>
+    if (Model.EnrolledStudents.Count > 0)
+    {
+        <table id="enrolledClass">
+            <tr>
+                <th>Student</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var studentUserName in Model.EnrolledStudents)
+            {
+                <tr>
+                    <td>@studentUserName</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Student", new { id = studentUserName }, null) |
+                        @Html.ActionLink("Drop", "DropStudentFromCourse", "Instructor", new { courseId = Model.Course.CourseId, studentUserName = studentUserName }, null) 
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <b>No students have enrolled for this course yet</b>
+    }
+}
+
+<br />
+
+<p>
+    @Html.ActionLink("Back to home page", "Index", "Home")
+</p>

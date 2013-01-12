@@ -1,0 +1,124 @@
+﻿body 
+{
+    background-color:   white;
+    color:              #333333;
+    font-size:          0.85em;
+    font-family:        "Open Sans", Helvetica, Sans-Serif;
+    margin:             0;
+    padding:            0;
+}
+
+input
+{
+    font-family:        "Open Sans", Helvetica, Sans-Serif !important;
+}
+
+h1, h2
+{
+    color:              #D35400;
+}
+
+h3, h4, h5, h6
+{
+    color:              #FF7B00;
+    font-size:          1.1em;
+    font-weight:        normal;
+}
+
+th
+{
+    color:              #833F00;
+    font-weight:        bold;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.pageStyle 
+{
+    margin:             20px;
+    width:              95%;
+}
+
+.clear
+{
+    clear:              both;
+}
+
+.error 
+{
+    color:              Red;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error 
+{
+    color:              #ff0000;
+}
+
+.field-validation-valid 
+{
+    display:            none;
+}
+
+.input-validation-error 
+{
+    border:             1px solid #ff0000;
+    background-color:   #ffeeee;
+}
+
+.validation-summary-errors 
+{
+    font-weight:        bold;
+    color:              #ff0000;
+}
+
+.validation-summary-valid 
+{
+    display:            none;
+}
+
+
+/* Main Styles */
+
+#logonUser 
+{
+    font-size:          1.1em;
+    text-align:         right;
+    margin:             10px;
+}
+
+#siteFooter
+{
+    clear:              both;
+    color:              #DDD;
+    display:            block;   
+    font-size:          0.85em;
+    padding-top:        3.0em;
+    text-align:         center;
+}
+
+.ajaxButtonStyle
+{
+    background:         transparent;
+    border:             none !important;
+    color:              #034af3 !important;
+    cursor:             pointer;
+    font-family:        "Open Sans", Helvetica, Sans-Serif;
+	font-size:		    1em;
+    padding:            0px;
+    text-decoration:    none !important;
+}
+
+.ajaxButtonStyle:hover
+{
+    color:          #AD5416 !important;
+}
+
+#deskControl
+{
+    display:        inline;
+    max-width:      1350px;
+}
+

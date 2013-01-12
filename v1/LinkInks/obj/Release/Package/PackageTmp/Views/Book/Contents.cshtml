@@ -1,0 +1,40 @@
+﻿@model LinkInks.Models.Entities.Book
+
+<customHeader>
+    <link href="@Url.Content("~/Content/BookToc.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+@{
+    ViewBag.Title       = Model.Title + ": a LinkInks book";
+    ViewBag.HideHeader  = true;
+}
+
+<!-- Book -->
+<div id="bookOutline">
+    <hgroup id="tocHeader">
+        <h1 id="bookTitle">@(Model.Title)</h1>
+    </hgroup>
+
+    <!-- Chapters -->
+    <section id="tocFrame">
+
+        <!-- Left Page: Empty -->
+        <div id="tocLeftPage"></div>    
+
+        <!-- Right Page -->
+        <div id="tocRightPage">
+            <div id="tocLabel">Table of Contents</div>
+            <section id="tocContents">
+                @if ((Model.Chapters != null) && (Model.Chapters.Count > 0))
+                {
+                    @Html.DisplayFor(editChapters => Model.Chapters)
+                }
+                else
+                {
+                    <div id="emptyToc">Welcome to a fresh new book! The author is still working on the chapters...</div>
+                }
+            </section>
+        </div>
+
+    </section> <!-- Chapters Close -->
+</div> <!-- Book Close -->
