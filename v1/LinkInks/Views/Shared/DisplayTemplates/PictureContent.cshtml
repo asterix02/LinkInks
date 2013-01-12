@@ -1,0 +1,8 @@
+﻿@model LinkInks.Models.Entities.PictureContent
+
+@{
+    var linkLocation = Url.Content(Model.Location);
+}
+
+<img id="picture_@(Model.ModuleId)" src="@linkLocation" alt="@(Model.Caption)" class="pictureContentStyle" />
+<p>@(Model.Caption)</p>

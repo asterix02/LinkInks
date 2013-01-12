@@ -1,0 +1,8 @@
+﻿@model LinkInks.Models.Entities.TextContent
+
+@if (!String.IsNullOrEmpty(Model.Title))
+{
+    <h2 class="moduleTitleStyle">@(Model.Title)</h2>
+}
+
+<div id="moduleParagraph_@(Model.ModuleId)" class="textContentStyle">@Html.Raw(Model.Content)</div>

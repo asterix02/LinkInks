@@ -1,0 +1,69 @@
+﻿@model LinkInks.Models.ChapterViewModels.DiscussionsViewModel
+
+<customHeader>
+    <link href="@Url.Content("~/Content/Discussions.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+@{
+    string discussionStyleOverride = "display: " + ((Model.ShowDiscussions == true) ? "block" : "none");
+}
+
+<!-- Discussions Slideout -->
+<section id="discussionsSlideout" class="discussionsSlideoutStyle" style="@discussionStyleOverride">
+
+    <!-- The hidden fields are present to work around an MVC bug where AJAX munges the submit button's
+            properties when posting back the form. We set them in ChapterRead.js using jQuery -->
+    @Html.Hidden("newPostText", "")
+    @Html.Hidden("selectedModuleId", Guid.Empty.ToString())
+    @Html.Hidden("selectedDiscussionId", Guid.Empty.ToString())
+    @Html.Hidden("discussionsSubmitAction", "")
+
+    <!-- Discussions Header -->
+    <div class="discussionsHeaderStyle">
+        <h1>Conversations</h1>
+        <div id="discussionHeaderActions" class="discussionHeaderActionsStyle">
+            <button id="discussionsStartNewButton"  type="button" class="discussionsHeaderButtonStyle">Start New</button>
+            <button id="discussionsRefreshButton"   type="submit" class="discussionsHeaderButtonStyle">Refresh</button>
+            <button id="discussionsCloseButton"     type="button" class="discussionsHeaderButtonStyle">Close</button>
+        </div>
+    </div> <!-- Discussions Header Close -->
+
+    <!-- Progress Display -->
+    <div id="discussionsAjaxLoader">
+       Loading, please wait ... 
+    </div>
+
+    <!-- Start New Discussion -->
+    <div id="newDiscussionControl">
+        <div class="discussionOwnerStyle">@(HttpContext.Current.Profile.UserName)</div>
+        <div class="newDiscussionStyle">
+            <input id="newDiscussionText" name="newDiscussionText" class="newDiscussionTextStyle" type="text" placeholder="Add comment here..."/>
+            <div id="newDiscussionActions" class="newDiscussionActionsStyle">
+                <button id="newDiscussionsSubmitButton" type="submit" class="newDiscussionActionButtonStyle">Post</button>
+                <button id="newDiscussionsCancelButton" type="button" class="newDiscussionActionButtonStyle">Discard</button>
+            </div>
+        </div>
+    </div> <!-- Start New Discussion Close -->
+
+    <!-- All Discussions -->
+    @if ((Model.ShowDiscussions == true) && (Model.Discussions != null) && (Model.Discussions.Count > 0))
+    {
+        foreach (var discussion in Model.Discussions)
+        {
+            bool expandDiscussion = ((@Model.LastUpdatedDiscussionId == discussion.DiscussionId) ? true : false);
+            <div>@Html.EditorFor(d => discussion, new { expandDiscussion })</div>
+        }
+    }
+    else
+    {
+        if ((Model.Discussions != null) && (Model.Discussions.Count == 0))
+        {
+            <label id="noConversationsLabel">No conversations, yet.</label>
+        }
+    } <!-- All Discussions Close -->
+
+</section> <!-- Discussions Slideout Close -->
+
+
+<!-- Required for custom UI manipulation using JQuery -->
+<script src="@Url.Content("~/Scripts/ChapterRead.js")" type="text/javascript" defer="defer"></script>

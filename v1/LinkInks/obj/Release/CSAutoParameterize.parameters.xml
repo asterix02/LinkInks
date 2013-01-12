@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ApplicationServices-Web.config Connection String" description="ApplicationServices Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:kd5561jyoe.database.windows.net,1433;Database=aspnet;User ID=LinkInksAdmin@kd5561jyoe;Password=Letmein2;Trusted_Connection=False;Encrypt=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\EduProj\\LinkInks\\LinkInks\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ApplicationServices']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:kd5561jyoe.database.windows.net,1433;Database=aspnet;User ID=LinkInksAdmin@kd5561jyoe;Password=Letmein2;Trusted_Connection=False;Encrypt=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\EduProj\\LinkInks\\LinkInks\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="DataServices-Web.config Connection String" description="DataServices Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:kd5561jyoe.database.windows.net,1433;Database=LinkInks;User ID=LinkInksAdmin@kd5561jyoe;Password=Letmein2;Trusted_Connection=False;Encrypt=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\EduProj\\LinkInks\\LinkInks\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataServices']/@connectionString" />
+  </parameter>
+  <parameter name="LinkInks.Models.UniversityDbContext-Web.config Connection String" description="LinkInks.Models.UniversityDbContext Connection String used in web.config by the application to access the database." defaultValue="LinkInks.Models.UniversityDbContext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\EduProj\\LinkInks\\LinkInks\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LinkInks.Models.UniversityDbContext']/@connectionString" />
+  </parameter>
+</parameters>

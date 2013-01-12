@@ -1,0 +1,52 @@
+﻿@model LinkInks.Models.ChapterViewModels.ReadViewModel
+
+<customHeader>
+    <link href="@Url.Content("~/Content/Chapter.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+<!-- Book -->
+<div id="bookOutline">
+    <hgroup id="chapterHeader">
+        <h1 id="chapterTitle">Chapter @(Model.Index): @(Model.Title)</h1>
+        <div id="chapterControls">
+            [ @Html.ActionLink("Home", "Index", "Home", null, new { Class = "ajaxButtonStyle" }) ]
+            [ @Html.ActionLink("Chapter List", "Contents", "Book", new { id = Model.BookId }, new { Class = "ajaxButtonStyle" }) ]
+            [ <input id="fullScreenButton" type="button" class="ajaxButtonStyle" value="Full Screen" /> ]
+        </div>
+    </hgroup>
+
+    <!-- Modules -->
+    <section id="bookModulesFrame">
+
+        <!-- Left Page -->
+        <div id="leftPage">
+            <section id="Page_@(Model.LeftPageNumber)" class="leftPageContentStyle">
+                @Html.DisplayFor(leftPageContents => Model.LeftPageModuleViewModels, new { pageSide = "left" })
+            </section>
+        </div>    
+
+        <!-- Right Page -->
+        <div id="rightPage">
+            <section id="Page_@(Model.RightPageNumber)" class="rightPageContentStyle">
+                @Html.DisplayFor(rightPageContents => Model.RightPageModuleViewModels, new { pageSide = "right" })
+            </section>
+        </div>
+
+    </section><!-- Modules close -->
+
+    <!-- Page footer section -->
+    <section id="chapterFooter">
+        <!-- The hidden "submitAction" field is to work around an MVC bug where AJAX munges the submit button's
+                properties when posting back the form. We set submitAction in ViewModulesScript.js using jQuery -->
+        @Html.Hidden("submitAction", "save")
+        <input id="previousPageButton"    type="submit" class="ajaxButtonStyle" value="Previous" />
+        <label id="leftPageNumber">@(Model.LeftPageNumber) of @(Model.LastPageNumber)</label>
+        <label id="rightPageNumber">@(Model.RightPageNumber) of @(Model.LastPageNumber)</label>
+        <input id="nextPageButton"        type="submit" class="ajaxButtonStyle" value="Next" />
+    </section><!-- Page footer section close -->
+
+</div> <!-- Book Close -->
+
+
+<!-- Required for custom UI manipulation using JQuery -->
+<script src="@Url.Content("~/Scripts/ChapterRead.js")" type="text/javascript" defer="defer"></script>

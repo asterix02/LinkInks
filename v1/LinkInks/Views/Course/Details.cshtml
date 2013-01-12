@@ -1,0 +1,111 @@
+﻿@model LinkInks.Models.CourseViewModels.DetailsViewModel
+
+<customHeader>
+    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+@{
+    ViewBag.Title = @Model.Course.Title + " (LinkInks Course)";
+}
+
+@{ 
+    var course  = Model.Course;
+    var book    = course.Book;
+    var index   = course.Book.BookId;
+    var stockCoverPhoto = Url.Content("~/Content/themes/base/images/book_cover.png");
+}
+
+<h2>@Model.Course.Title</h2>
+<p>Instructor: @course.InstructorUserName; @course.Credits credits</p>
+<br />
+
+<div id="bookThumbnailControl_@(index)" class="studentBookThumbnailStyle">
+    <div id="bookThumbnailPhoto_@(index)">
+        <img class="bookCover" src="@stockCoverPhoto" alt="@book.Title"/>
+        @if (!String.IsNullOrEmpty(book.CoverPhoto))
+        {
+            var imageSource = LinkInks.Models.BlobStorage.Store.GetAbsoluteUri(book.BookId, book.CoverPhoto);
+            <img class="bookCoverPhotoStyle" src="@imageSource" alt="@book.Title"/>
+        }
+    </div>
+    @Html.ActionLink(@course.Book.Title, "Read", "Book", new { id = book.BookId }, null)
+
+    @if (Model.UseAdministratorView)
+    {
+        <p>Query time: @Model.EnrollmentQueryTime.TotalMilliseconds ms</p>
+    }
+
+    <p><b>@Model.DiscussionsCount</b> discussions</p>
+    @if (Model.UseAdministratorView)
+    {
+        <p>Query time: @Model.DiscussionsQueryTime.TotalMilliseconds ms</p>
+    }
+</div>
+
+<br class="clear"/>
+<br />
+
+@if (Model.UseInstructorView)
+{
+    <h3>Enrolled Class: @Model.EnrolledStudents.Count</h3>
+    if (Model.EnrolledStudents.Count > 0)
+    {
+        <table id="enrolledClass">
+            <tr>
+                <th>Student</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var studentUserName in Model.EnrolledStudents)
+            {
+                <tr>
+                    <td>@studentUserName</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Student", new { id = studentUserName }, null) |
+                        @Html.ActionLink("Drop", "DropStudentFromCourse", "Instructor", new { courseId = Model.Course.CourseId, studentUserName = studentUserName }, null) 
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>No students have enrolled for this course yet</p>
+    }
+
+    <br />
+    <br />
+    
+    <h3>Students waiting for instructor approval: @Model.WaitlistedStudents.Count</h3>
+    if (Model.WaitlistedStudents.Count > 0)
+    {
+        <table id="waitlistedClass">
+            <tr>
+                <th>Student</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var studentUserName in Model.WaitlistedStudents)
+            {
+                <tr>
+                    <td>@studentUserName</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Student", new { id = studentUserName }, null) |
+                        @Html.ActionLink("Allow", "AddStudentToCourse", "Instructor", new { courseId = Model.Course.CourseId, studentUserName = studentUserName }, null) 
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>No students have been waitlisted for this course</p>
+    }
+}
+
+<br />
+<br class="clear"/>
+<br />
+
+<p>
+    @Html.ActionLink("Back to home page", "Index", "Home")
+</p>
+

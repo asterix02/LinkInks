@@ -1,0 +1,10 @@
+﻿@model LinkInks.Models.Entities.QuestionContent
+
+<h2 class="moduleTitleStyle">Question</h2>
+
+<div id="moduleQuestion_@(Model.ModuleId)" class="questionTextStyle">@Html.Raw(Model.QuestionText)</div>
+
+@foreach (var answerChoice in Model.AnswerChoices)
+{
+    <div id="moduleChoice_@(Model.ModuleId)" class="answerChoiceStyle">@answerChoice</div>
+}

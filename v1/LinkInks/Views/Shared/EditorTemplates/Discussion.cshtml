@@ -1,0 +1,101 @@
+﻿    @model LinkInks.Models.Entities.Discussion
+
+@Html.HiddenFor(discussionId => Model.DiscussionId)
+
+@{
+    bool expandDiscussionValue = (bool)ViewData["expandDiscussion"];
+    string discussionStyleOverride = "display: " + (expandDiscussionValue ? "block" : "none");
+}
+
+@switch (Model.GetDiscussionType())
+{
+    case LinkInks.Models.Entities.Discussion.DiscussionType.Conversation:
+        <div id="discussion_@(Model.DiscussionId)" class="discussionStyle">
+            <!-- Posts Header -->
+            <div class="discussionOwnerStyle">@(Model.OwnerUserName)</div>
+            <div class="discussionTitleStyle">@(Model.Title)</div> <!-- Posts Header Close -->
+    
+            <!-- Add New Post -->
+            <div id="newPost_@(Model.DiscussionId)" class="newPostStyle">
+                <input id="newPostText_@(Model.DiscussionId)" class="newPostTextStyle" type="text" placeholder="Add comment here..."/>
+                <div id="newPostActions_@(Model.DiscussionId)" class="newPostActionsStyle">
+                    <button id="newPostSubmitButton_@(Model.DiscussionId)" type="submit" class="newPostActionButtonStyle">Post</button>
+                    <button id="newPostCancelButton_@(Model.DiscussionId)" type="button" class="newPostActionButtonStyle">Discard</button>
+                </div>
+            </div> <!-- Add New Post Close -->
+
+            <!-- All Posts Actions -->
+            <div class="discussionActionsStyle">
+                <button id="viewAllPosts_@(Model.DiscussionId)" type="button" class="discussionActionButtonStyle">Comments</button>
+                <button id="addPost_@(Model.DiscussionId)" type="button" class="discussionActionButtonStyle">Add</button>
+            </div> <!-- All Posts Actions Close -->
+    
+            <!-- All Posts Section -->
+            @if (Model.Posts != null)
+            {
+                <div id="posts_@(Model.DiscussionId)" class="posts" style="@(discussionStyleOverride)">
+                    @foreach (var post in Model.Posts)
+                    {
+                        <div class="postOwnerStyle">@(post.OwnerUserName)</div>
+                        <div class="postContent">@(post.Content)</div>
+                    }
+                </div>
+            } <!-- All Posts Section Close -->
+        </div>
+            break;
+
+    case LinkInks.Models.Entities.Discussion.DiscussionType.QuizAnswer:
+        <div id="discussion_@(Model.DiscussionId)" class="discussionStyle">
+
+            <!-- Answer Choices Header -->
+            <div class="discussionOwnerStyle">@Model.Title</div> <!-- Answer Choices Header Close -->
+
+            <!-- TODO: HACK: Need to strongly type this information instead of relying on strings -->
+            @{ var answeredQuestion = Model.Title.Equals("Status: Answered", StringComparison.InvariantCultureIgnoreCase); }
+            @if (answeredQuestion == false)
+            {
+                <!-- Answer Choices Section -->
+                if (Model.Posts != null)
+                {
+                    <fieldset id="posts_@(Model.DiscussionId)" class="answerChoiceGroupPostStyle">
+                        @foreach (var post in Model.Posts)
+                        {
+                            var radioButtonName = "answerChoice";
+                            <input type="radio" class="answerChoiceRadioStyle" name="@radioButtonName" value="@post.Content" checked="checked"/>
+                            <label for="@radioButtonName" class="answerChoicePostStyle">@post.Content</label>
+                            <br />
+                        }
+                    </fieldset>
+                } <!-- Answer Choices Section Close -->
+
+                <!-- Answer Choices Actions -->
+                <div class="discussionActionsStyle">
+                    <button id="submitAnswer_@(Model.DiscussionId)" type="submit" class="answerActionButtonStyle">Submit</button>
+                    <button id="cancelAnswer_@(Model.DiscussionId)" type="button" class="answerActionButtonStyle">Cancel</button>
+                </div> <!-- Answer Choices Actions Close -->                
+            }
+            else
+            {
+                <!-- Message Section -->
+                <div class="answeredSectionStyle">
+                    <p id="message_@(Model.DiscussionId)" class="answerMessageStyle">@Model.Posts.ElementAt(0).Content</p>
+                </div>
+
+                <div class="answerMessageGroupStyle">
+                    <label class="answerMessageStyle">Correct Answer</label>
+                    <p id="correctAnswer_@(Model.DiscussionId)" class="answerMessageChoicesStyle">@Model.Posts.ElementAt(1).Content</p>
+                    <br />
+
+                    <label class="answerMessageStyle">Your Answer</label>
+                    <p id="myAnswer_@(Model.DiscussionId)" class="answerMessageChoicesStyle">@Model.Posts.ElementAt(2).Content</p>
+                </div>
+
+                <!-- Action Choices Actions -->
+                <div class="discussionActionsStyle">
+                    <button id="cancelAnswer_@(Model.DiscussionId)" type="button" class="answerActionButtonStyle">Close</button>
+                </div> <!-- Action Choices Close -->
+            }
+
+        </div>
+            break;
+}

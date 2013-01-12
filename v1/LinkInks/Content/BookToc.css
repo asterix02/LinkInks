@@ -1,0 +1,112 @@
+﻿#bookOutline
+{
+    background: 	white url('../../Content/themes/base/images/book_toc.png') no-repeat;
+    background-color: transparent;
+    border-radius:	7px;
+    box-shadow:		0px 0px 12px 4px gray;
+    float:          left;
+    font-size:      0.85em;
+    height:			670px;
+    overflow: 		hidden;
+    padding: 		0px;
+    width:			1100px;
+}
+
+#tocHeader
+{
+    background:		transparent;
+    display:		table;
+    font-size:		1em;
+    margin: 		0px;
+    margin-left:	730px;
+    margin-top:		40px;
+    overflow: 		hidden;
+}
+
+#bookTitle
+{
+    color:          #66775C;
+    display:        table-cell;
+    font-size:		1em;
+    font-style:		italic;
+    font-weight:    normal;
+    height:         1.5em;
+    overflow: 		hidden;
+    padding-right:  75px;
+    text-align:     right;
+    width:          350px;
+}
+
+#tocFrame
+{
+    display:        table;
+    height:         560px;
+    overflow:       visible;
+}
+
+#tocLeftPage
+{
+    display:        table-cell;
+    width:          550px;
+}
+
+#tocRightPage
+{
+    display:        table-cell;
+    width:          550px;
+}
+
+#tocLabel
+{
+    color:          #66775C;
+    font-size:      1.2em;
+	margin-left:    65px;
+	padding-top:    20px;
+	padding-bottom: 10px;
+}
+
+#emptyToc
+{
+    color:          Gray;
+	padding-top:    15px;
+	padding-bottom: 10px;
+}
+
+#tocContents
+{
+	background-color: transparent;
+  	height:			auto; 
+	margin-left:    0px;
+	margin-right:   0px;
+  	max-height:     540px !important; 	
+	overflow: 		visible;
+}
+
+.chapterRowStyle
+{
+    display:        table-row;
+}
+
+.chapterIndexStyle
+{
+    background:     none;
+    border:         none !important;
+    color:          #4E9B00 !important;
+    display:        table-cell;
+    font-weight:    bold;
+    padding-left:   70px;
+    padding-top:    1em;
+    width:          35px;
+}
+
+.chapterTitleStyle
+{
+    background:     none;
+    border:         none !important;
+    color:          #4E9B00 !important;
+    display:        table-cell;
+	font-size:		1.1em !important;
+    font-weight:    normal;
+    min-width:      300px;
+    width:          300px;
+}

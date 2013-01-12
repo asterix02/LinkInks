@@ -1,0 +1,33 @@
+﻿@model LinkInks.Models.InstructorViewModels.DetailsViewModel
+
+@{
+    ViewBag.Title = Model.InstructorUserName + "'s LinkInks Details Page";
+}
+
+<h2>Instructor: @Model.InstructorUserName</h2>
+
+<table id="courses">
+    <tr>
+        <th>Course</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var course in Model.Courses)
+    {
+        <tr>
+            <td>@course.Title</td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Course", new { id = course.CourseId }, null) 
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Create New Course", "Create", "Course")
+
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Back to home page", "Index")
+</p>
+

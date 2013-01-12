@@ -1,0 +1,53 @@
+﻿@model LinkInks.Models.StudentViewModels.IndexViewModel
+           
+<customHeader>
+    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+</customHeader>          
+
+@{
+    ViewBag.Title = Model.StudentUserName + "'s LinkInks Homepage";
+}
+
+@{ 
+    var stockCoverPhoto = Url.Content("~/Content/themes/base/images/book_cover.png");
+    var courseInfos = Model.CourseInfos;
+}
+
+@if (courseInfos.Count > 0)
+{
+    <section id="bookThumbnailsSection">
+        <div id="userGreetingSection">
+            <h1 id="userGreeting">What will you learn today?</h1>
+            @Html.ActionLink("Register For Course", "Details", null, new { id = "greetingLink"})
+        </div>
+
+        <div id="bookThumbnails">
+        @foreach (var courseInfo in courseInfos)
+        {
+            var book = courseInfo.Book;
+            var index = courseInfo.Book.BookId;
+            <div id="bookThumbnailControl_@(index)" class="studentBookThumbnailStyle">
+                <div id="bookThumbnailPhoto_@(index)">
+                    <img class="bookCover" src="@stockCoverPhoto" alt="@book.Title"/>
+                    @if (!String.IsNullOrEmpty(book.CoverPhoto))
+                    {
+                        var imageSource = LinkInks.Models.BlobStorage.Store.GetAbsoluteUri(courseInfo.Book.BookId, book.CoverPhoto);
+                        <img class="bookCoverPhotoStyle" src="@imageSource" alt="@book.Title"/>
+                    }
+                </div>
+                <div id="bookThumbnailActions_@(index)" class="bookThumbnailActionsStyle">
+                    @Html.ActionLink(@courseInfo.Title, "Read", "Book", new { id = book.BookId }, null)
+                </div>
+            </div>
+        }
+        </div>
+    </section>
+}
+else
+{
+    <h1 id="emptyCoursesGreeting">Learn something new today!</h1>
+    <div class="bookThumbnailActionsStyle">
+        @Html.ActionLink("Register here", "Details") for courses. [<b>Tip</b>: Try the "Getting Started" course first.]
+    </div>
+    <h4></h4>
+}
