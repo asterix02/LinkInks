@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <book title="Jumpstart Your Experience" coverPhoto="jumpstart_cover.jpg">
-  <chapter id="1" title="Customer Centric Marketing: An Introduction" pageCount="4">
+  <chapter id="1" title="Customer Centric Marketing: An Introduction" pageCount="20">
     <page pageNumber="1">
       <text title="The need for customer-centric marketing" id="{25196275-0E38-476D-A327-3038B917B5D5}">
         Today, marketing managers recognize that customer knowledge has become a promising
@@ -30,10 +30,7 @@
     </page>
 
     <page pageNumber="2">
-      <img src="image001.png" alt="Image001" 
-           id="{C7AC5679-FE04-4C76-A9A8-453FEF4ED673}">
-        Figure 1
-      </img>
+      <img src="image001.png" alt="Image001" id="{C7AC5679-FE04-4C76-A9A8-453FEF4ED673}">Figure 1</img>
 
       <text title="What is customer-centric marketing?" id="{4F577009-8834-45CD-8E13-27AB86333783}">
         Customer-centric marketing means putting
@@ -80,22 +77,280 @@
         customer loyalty and "share of wallet" during their lifetime. The objective is
         to maximize each individual consumer’s long-term profit contribution.
       </text>
-    </page>
-
-    <page pageNumber="4">
       <text title="Why customer-centric marketing?" id="{279CEDFB-9678-4F53-BDFF-619503C8662B}">
         The answer to the question "why should we switch to a customer-centric marketing approach?" is
         an economic one: Because it will increase profits. This will happen for
         some of the following reasons.
       </text>
+    </page>
 
+    <page pageNumber="4">
       <text title=" " id="{7D77914E-25CB-4485-B76E-D6762F5C611A}">
         First, consumer resistance to intrusive marketing is increasing:
-        <li>
-          <ul>68% of consumers agree there are too many ads today</ul>
-        </li>
+        <ul>
+          <li>68% of consumers agree there are too many ads today</li>
+          <li>63% of US households wish they got less direct mail</li>
+          <li>66% of emails received are unwanted</li>
+        </ul>
+        Second, consumers are actively taking control away from marketers:
+        <ul>
+          <li>75% of consumers have or intend to sign up for Do-Not-Call lists</li>
+          <li>74% have or intend to install pop-up and Spam blockers</li>
+        </ul>
+        Third, more effectiveness can be achieved:
+        <ul>
+          <li>Customer-focused (as opposed to promotional and product-focused) communications will increase customer loyalty 
+              and, as a result, customers will buy more over a longer period of time</li>
+        </ul>
+        Fourth, more efficiency can be achieved: 
+        <ul>
+          <li>Marketing investment will be better aligned with customer profit potential so marketing will become more cost-efficient (There will be less wasted marketing dollars on low-potential customers)</li>
+          <li>There is also a potential for a huge reduction in segment-targeted direct mail with its associated environmental benefits.</li>
+        </ul>
       </text>
+    </page>
+    <page pageNumber="5">
+      <text title=" " id="{B0617382-BB19-4bf6-B92E-50EC101107AD}">
+      Customer-centric marketing is more than all of the above – it has the potential to redefine the way marketing
+      is currently practiced to focus on the needs of the consumer, not the marketer. Instead of interruption marketing,
+      it urges firms to practice permission marketing.
+      </text>
+      <img src="image002.png" alt="Image002" id="{9ACF46B2-5DF6-434e-9B1C-113561705917}">Figure 2</img>
+      <text title="How Are Customer-Centric Marketing Decisions Made Differently?" id="{4A41C07A-9447-48f0-B089-73093FB31221}">
+      Conceptually, the core idea behind customer-centric marketing is to identify customer heterogeneity (e.g., demand, taste, cost to serve, sensitivity to firm's decision variables)
+      and customize marketing interventions that are relevant to the status and preferences of each customer. The goal is to acquire, nurture, and retain customers to 
+      maximize customer lifetime contribution to the company's profit, 
+      </text>
+    </page>
+    <page pageNumber="6">
+      <text title=" " id="{026D5CB7-5857-4ff5-871A-E7530540D05A}">
+      while controlling costs. Intuitively, three components characterize customer-centric marketing: 
+      Customer knowledge, which identifies customers, follows their evolving demand, and/or tracks changes in customer preference (Rossi et al. 1996); foresight 
+      about customers' future reaction to current marketing interventions and hence their long-term profit contributions (Berger et al. 2002); and a sequence of 
+      customized and inter-temporally related marketing treatments (Anderson 2006).
+      <br/>
+      Accordingly, implementing customer-centric marketing takes two iterative steps:
+      <ol>
+        <li>The firm continuously learns about each individual customer by analyzing results from the recent interactions, and then</li>
+        <li>it adapts its decisions according to its recent updated knowledge about each customer.</li>
+      </ol>
+      The first step involves learning; the firm analyzes customer information on the basis of revealed customer reactions to the firm's most recent actions. The 
+      second step pertains to acting on information; the firm incorporates the updated knowledge into its marketing decisions, such as price, promotion, advertising, 
+      and product design.  During this iterative process, updated knowledge continuously adjusts firm decisions, and the resulting customer reactions again inform 
+      the learning process. Thus, learning and decision making are inter-dependent. We term this increasingly observed business practice of continuous learning and 
+      acting on customer information for the purpose of maximizing long-term profit
+      </text>
+    </page>
+
+    <page pageNumber="7">
+      <text title=" " id="{F8FABE63-A2A4-4fa7-A6C5-805F3BD4196E}">
+       ``customer information management" (CIM), and this require firms to 
+      <ul>
+        <li>Track and learn consumer development</li>
+        <li>Foresee future profit potential</li>
+        <li>Offer consumers one-on-one marketing treatment</li>
+      </ul>
+      </text>
+      <text title="The Three Components of Customer-Centric Marketing Decisions" id="{BC54386D-86C3-4771-B81B-BACF0617BF34}">
+      Customer-centric marketing decision making requires three important components:(i) learning about customer, (ii) a forward-looking component into customer’s 
+      life time value, and (iii) optimally trading off short-term costs and long-term profit.
+      <br></br>
+      First, the firm needs to track the development of each customer (<strong><em>learning</em></strong>).  As demonstrated by Kamakura, Ramaswami and Srivastava (1991) and Li, 
+      Sun and Wilcox (2005), customers’ demand for various products seems to be governed by a latent and evolving demand state or maturity, which develops 
+      over time with changes in life-stage, accumulation of consumption experience, available financial resources, and learning about particular products. 
+      The evolving, but latent, demand maturity represents an individual customer’s readiness for a particular product at a certain time. 
+      It is an important predictor for products that are most likely to be purchased at a certain time by a particular customer
+      </text>
+    </page>
+    <page pageNumber="8">
+      <text title=" " id="{093B5BDA-A5A0-4c0f-B693-CF728893F04C}">
+       and likely to lead to a better 
+      understanding of the timing on marketing opportunities.
+      <br></br>
+      Second, the firm needs to expect future profit potential (<strong><em>forward-looking</em></strong>). Marketing is an important part of long-term customer relationship 
+      management with the goal of maximizing total profit throughout the entire customer lifecycle (Sun, Li and Zhou 2006). This requires the company 
+      to be able to follow the evolution of customer needs, predict their future profit potential and be willing to forgo short-term profit in order 
+      to maximize long-term profit. Current practice calculates net present value of customers’ future profits and treats this as another segmentation 
+      variable to guide targeting strategies for a scheduled campaign. Although future profit is taken into account, this net present value approach is still 
+      used only as an ad hoc segmentation strategy. This is different from a forward-looking approach of holistically making multi-state and multi-channel 
+      marketing campaign decisions over a period of time, so future consequences affect the derived optimal cross-selling decisions.
+      <br></br>
+      Third, the firm needs to make optimal decisions (<strong><em>optimization</em></strong>). To make the optimal choice among alternative marketing campaign strategies 
+      regarding who, when, what and how decisions, the company needs to integrate its knowledge on evolution of household demand maturity and their heterogeneity, 
+      predict the dynamic consequences of its marketing 
+      </text>
+    </page>
+    <page pageNumber="9">
+      <text title=" " id="{08AA21CE-5307-439a-8602-3FBA2AC7AEBD}">
+      solicitations, take into account the cost of acquisition and household’s long-term profit contribution, 
+      and make optimal trade-off between short-term solicitation cost and long-term financial payoff in order to maximize “lifetime” profit of customers. This is 
+      a complicated problem that is not easily handled by traditional household models, regression or segmentation approaches from data-mining. Given the nature of 
+      the problem, the most parsimonious way to obtain the answer is to treat marketing decisions as solutions to a stochastic optimization problem under demand 
+      uncertainty.  The demand uncertainty comes from households’ future demand in response to marketing solicitations. 
+      </text>
+      <text title="The Four Salient Features of Customer-Centric Marketing Decisions" id="{05407896-2975-4e2c-8664-AF83B15616C7}">
+      Customer-centric marketing decisions have four features.
+      <br></br>
+      First, the decision should be <strong><em>customized</em></strong> because adaptive learning enables the firm to improve its knowledge about each individual customer and make marketing offers 
+      according to its best knowledge about that customer’s preferences. Recognizing the evolving needs of each customer, our solution recommends the most 
+      appropriate marketing offers to meet the evolving needs of a customer. With the understanding of customer preference for different campaign channels, 
+      our solutions also allow us to adopt the most effective campaign vehicle, tailored to an individual’s preference. For example, since we recognize the educational 
+      role of 
+      </text>
+    </page>
+    <page pageNumber="10">
+      <text title=" " id="{399C06F3-2D8B-4562-BC54-5084EABAB7E3}">
+      cross-selling campaigns by treating them as an integrated multi-stage process instead of a promotion that triggers immediate purchase, our framework 
+      differentiates short-term unprofitable customers and allows the company to sacrifice short-term profits for greater long-term profits (such as in the case of customers 
+      who are students with potential to turn profitable).
+      <br></br>
+      Second, it should be <strong><em>dynamic</em></strong> because the decisions on when and which product to send solicitation is made in accordance with the development of household demand 
+      maturity state. Continuing the example of a student customer of a bank, a graduation event could trigger an offer for automobile or home loans.
+      <br></br>
+      Third, it should be <strong><em>proactive</em></strong> because the firm takes into account the trade-off between short-term service costs and the long-term consequences of alienating customers, 
+      which implies that it can sacrifice short-term profits by offering customers his preferred offer to prevent defection and improve long-term profits. Offering the student 
+      customer with a typical profile a credit card account early in her career could potentially earn her loyalty over a long profitable career.
+      <br></br>
+      Fourth, our proposed allocation decisions are <strong><em>experimental</em></strong>, in the sense that the forward-looking firm may sub-optimally assign a customer to a 
+      </text>
+    </page>
+    <page pageNumber="11">
+      <text title=" " id="{3D90ADD6-F707-4855-8122-BE0435BC1C3F}">
+      center to collect more information and learn about his or her type faster. The experimental property resulting from dynamics decision making under uncertainty has been 
+      discussed by Erdem and Keane (1996) in the context of consumer purchases of frequently purchased packaged goods. In our running example, testing whether a student customer 
+      is a sound candidate for an eventual home loan can be accomplished by offering her a small educational loan during her educational tenure and monitoring her payment 
+      behavior.
+      </text>
+      <text title="What fuels customer-centric marketing?" id="{2181E119-3950-434d-9952-C333E6EE2784}">
+      Given the central role of individualization in moving toward customer-centricity, companies from all types of industries, ranging from manufacturing to online retailing, 
+      are exploring innovative ways to accumulate and understand customer information. Sophisticated analytical tools such as data warehousing and data mining technologies offer 
+      promising means of gaining detailed knowledge about each customer. The recent move towards big data and cloud computing that make the collection, storage and access of such 
+      vast interaction information very easy has also fueled the trend towards customer-centricity.
+      <br></br>
+      Realizing that understanding customers provides only a foundation but that acting on information represents the ultimate step towards customer-centric marketing, 
+      firms also seek analytical marketing solutions that 
+      </text>
+    </page>
+    <page pageNumber="12">
+      <text title=" " id="{87A5CA02-E95E-4142-B7F1-456F55CF78B1}">
+      enable them customize their marketing decisions, such as promotion, advertising, and product design, according 
+      to their most updated customer information. These data mining and analytical tools let them (instantly) retrieve the most recent customer information, continuously 
+      learn about the preferences of individual customers, respond directly to customer requests, and provide customers with highly customized intervention 
+      decisions (Weiner 2001). A report by the independent market analyst Data Monitor forecasts global enterprise investments in data mining and analytical marketing tools 
+      will grow from an estimated $2.3 billion in 2005 to more than 3 billion in 2009. IDC recently published a report on the market for Big Data technology and services, 
+      which it estimates will grow at an annual rate of 40% to reach almost $17 billion by 2015. Another report by Forrester Research forecasts that U.S. interactive marketing 
+      spending will reach $76.6 billion by 2016, equal to TV spending in 2012 and comprising 35% of all advertising, up from 19% of all spending in 2012.
+      <br></br>
+      As a concrete example, the recommendation system adopted by Amazon.com allows the online retailer to analyze customer preferences using their recent purchase 
+      histories and (automatically) recommends other products for the purpose of improving customers' shopping experiences and future cross-sell opportunities. 
+      Credit card companies use real-time data mining to screen credit applicants, predict credit fraud, and customize their offers and alerts. Ameritrade develops 
+      long-term, 
+      </text>
+    </page>
+    <page pageNumber="13">
+      <text title=" " id="{F1B0A869-94CD-4c82-BACF-3CE9BF690149}">
+      one-to-one marketing communication plans to improve the lifetime value of each customer by considering the benefits of customer acquisition over a 
+      long period of time.
+      <br></br>
+      In the retail sector, retailers should base their marketing programs on three basic tenets:
+      <ul>
+        <li>Acquire new customers that have the best potential to become long-term customers. Go for quality, not quantity in the customer acquisition process.</li>
+        <li>Determine as early in the relationship as possible which new customers have the greatest potential to become high-value, long-term customers — and focus marketing 
+        spending on them rather than on low-potential customers.</li>
+        <li>Reward existing high-value, loyal customers with special treatment in order to retain a higher percentage of them, since they are the customers keeping you in 
+        business.</li>
+      </ul>
+      </text>
+      <text title="Leveraging the Computing Advantage" id="{8DD21FB8-D101-4b2f-B4BC-38DB660FFEF4}">
+      In response to the growing demand for integrated data mining and analytical decision tools, new software applications, under the names of customer relationship 
+      management (CRM) or Web analytics (WA), have made significant inroads among commercial firms, which allows the 
+      </text>
+    </page>
+    <page pageNumber="14">
+      <text title=" " id="{A6E55A52-2237-4ac5-8732-00DCB515CC74}">
+      adopters to automate their data mining and decision making processes. For instance, the On-Demand Customer Relationship Management by Saleforce.com claims that the 
+      software provides ``point-and-click customization that fits the way you sell" and that ``real-time analytics empower your business to make better decisions." Microsoft 
+      Dynamics CRM 3.0 Professional Datasheet claims that it ``is a complete customer relationship management solution that provides all of the tools and capabilities needed 
+      to create and easily maintain a clear picture of customers from first contact through purchase and post-sales."
+      <br></br>
+      Recent technological developments have opened massive opportunities to advance and automate CRM decisions. They transform the CRM system from a data collection and 
+      storage technology into one that promotes service excellence and identify revenue growth opportunities (Weiner 2001). Ideal CRM interventions should be customer-centric 
+      by following the development of each individual customer and making multi-segment, multi-stage, and multi-channel CRM interventions with the goal of maximizing the 
+      total customer profit. However, most recent CRM practices are still conveniently campaign-centric, in which the focus is on selecting the most profitable customers for 
+      a scheduled CRM intervention.
+      <br></br>
+       “Extraordinary increases in computational speed allow sellers to use more sophisticated tools to quickly analyze traditional databases and to continuously improve 
+       targeting strategies” (Shugan 2003). 
+      </text>
+    </page>
+    <page pageNumber="15">
+      <text title=" " id="{12293FFF-A2C4-4e86-99E3-BD5A503D9F5E}">
+      The fast development of on-line and direct marketing industries creates enormous opportunity for adaptive learning and proactive 
+      marketing decision making.  This calls for substantial research to develop statistical algorithms to measure customer insights and develop optimization routines as 
+      decision-support systems to automate the implementations of marketing decisions to better manage customer relationships. For companies with difficulties automating 
+      the implementation of CRM decisions, the statistical properties derived from the proposed framework provide descriptive guidance for managers to adjust their CRM 
+      decisions.
+      </text>
+      <text title="Reconciling two viewpoints" id="{77009001-AB6A-4b1e-BC25-F06AF69922F9}">
+      The rapid growth of demand for and supply of sophisticated data mining and analytical decision tools calls for research to understand the value of learning and how 
+      learning interacts with a firm's day-to-day marketing strategies. Unfortunately, the inter-related issues of data mining customer information and the firm’s 
+      analytical decision making followed separate streams in the academic literature. On the one hand, marketing researchers develop statistical approaches to 
+      identify consumer heterogeneity (e.g., Kamakura and Russell 1989; Rossi et al. 1996) without explicitly deriving firm decisions.  This line of research results 
+      in a snap shot segmentation of customers and score rankings of consumers based on relevant variables. These segmentation methods are useful tools for campaign-centric 
+      marketing, which maximizes the return of investment of each campaign event by treating them independently over time. On the  
+      </text>
+    </page>
+    <page pageNumber="16">
+      <text title=" " id="{D2EC683D-10F0-4261-8D1F-E2AD2998FA4A}">
+      other hand, financial and information 
+      economists have explicitly treated firms as decision makers that optimally act on information. However, by focusing on information at the aggregate demand or product level, 
+      this stream of literature ignores firms' incomplete information about individual consumers. The approach we propose reconciles these multiple points of view: We 
+      advocate using the economist’s point of view in the firm’s decision making process but take into account all the available customer information data from marketing 
+      analytics, and propose constructing a long-term model that tracks the firm’s interaction with the customers effectively and efficiently.
+      </text>
+      <text title="Some Pioneers" id="{8FE6F0D4-6BCB-4b9e-A48D-AA36F6F4F97E}">
+      </text>
+      <img src="Harrahs.png" alt="Harrahs" id="{25C7A3C3-C98E-4972-A108-422CF6403F99}"></img>
+    </page>
+    <page pageNumber="17">
+      <text title="Harrah’s Entertainment banks on delivering what its customers want (Millstein 2007)" id="{F7C583CD-693F-423d-976E-16AA1647FC2D}">
+      For example, Harrah’s knows exactly where its profits come from --- and that extends far beyond the gaming tables. It is based on precise details of what its 
+      customers want and catering to them so they keep coming back. Harrah’s has information on over 30 million people in the United States. It knows what its customers 
+      play, when they gamble and how much money they spend at spas or other non-gambling activities such as shopping. “Some customers will spend $1,000 a night with us 
+      and not gamble at all,” said the Steve Pinchuk, corporate VP of revenue management for Harrah’s Entertainment. Making money and catering to customers is a particularly 
+      complex system driven by advanced customer loyalty and revenue-management programs. The goal, above all else, is to avoid “promiscuous” behavior by gamers—meaning 
+      keeping Harrah’s customers from “straying” into another owner’s casino where a bond could be formed.
+      <br></br>
+      The casino sends targeted offers to its frequent guests offering discounts on special tickets that they know will match particular desires. It does the same for its 
+      guests in the casino and once they return home. Harrah’s Entertainment represents an almost a scientific brainstorming center for analyzing customer spending and 
+      shopping behavior, and then treating each person in the way that ensures the best experience well beyond the notion of winning money.
+      </text>
+    </page>
+    <page pageNumber="18">
+      <img src="Bloomingdales.png" alt="Bloomingdales" id="{B357C5FE-FC4E-4258-9DEC-5E9B36E81C97}"></img>
+      <text title="Integration drives greater value: Bloomingdale’s" id="{ECBE747A-FE3C-4de1-BCF9-C491240C0E30}">
+      Bloomingdale’s, the upscale department store division of Federated Department Stores, exemplifies a retailer with a foundational level of customer information integration 
+      that is used to deliver greater value to its customers. First, it integrates customer transactional data with other long-term information about its customers to better 
+      understand customers’ shopping patterns. By analyzing these spending patterns of when they shop and what they buy, Bloomingdale’s is able to anticipate customers’ needs 
+      and dynamically adjust its merchandising and marketing strategies. Second, the company uses this integrated information to drive its customer relationship management 
+      program. Using internal systems, Bloomingdale’s can access two-year’s worth of purchasing data to create and deliver targeted offers to points of sale. Messages are sent 
+      to store employees to read to specific customers they are serving. The messages 
+      </text>
+    </page>
+    <page pageNumber="19">
+      <text title=" " id="{998B2716-D9BC-4162-8C19-5D8AEB4C4306}">
+      inform shoppers about special benefits they have qualified for based on their purchases, such 
+      as an invitation to a party or a private sales event. Customers enjoy the personalized service and have responded favorably to the program.
+      <br></br>
+      In this book, we discuss the two-step procedure (“adaptive” learning and “proactive” marketing decisions) and three-components for customer-centric marketing. We 
+      formulate marketing interventions as solutions to a stochastic dynamic programming problem under demand uncertainty in which the company needs to learn about the 
+      evolution of customer demand, the dynamic effect of its marketing interventions, the heterogeneity of customer preferences, the cost of interventions, and the 
+      long-term payoff, with the goal of maximizing the “long-term” profit of each customer. We also use four examples to demonstrate the input, output, and benefit 
+      of “adaptive” learning and “proactive” marketing.  Our proposed solution meets the recent demand of companies seeking real-time solutions for integrating database 
+      and marketing decisions that are empowered by the advancement of information technology.
+      </text>
+    </page>
+    <page pageNumber="20">
     </page>
   </chapter>
 </book>
-
