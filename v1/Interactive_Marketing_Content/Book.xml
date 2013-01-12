@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<book title="Jumpstart Your Experience" coverPhoto="jumpstart_cover.jpg">
+  <chapter id="1" title="Customer Centric Marketing: An Introduction" pageCount="4">
+    <page pageNumber="1">
+      <text title="The need for customer-centric marketing" id="{25196275-0E38-476D-A327-3038B917B5D5}">
+        Today, marketing managers recognize that customer knowledge has become a promising
+        means of building comparative advantages, defending competition, and growing
+        revenue (Sawhney, et al. 2004).
+        Companies have
+        changed their thinking from being product centric and holding a “one-size fits
+        all” monologue with themselves, to being customer-centric and having a
+        “one-to-one” dialogue with each customer. Instead of having no differentiation
+        or customization, companies must begin to treat customers in a highly differentiated
+        and customized fashion.
+      </text>
+      <text title=" " id="{2F03672D-BFA1-4252-8917-94833D0F5485}">
+        Customers
+        have come to represent firm assets, and firms' marketing focus has shifted from
+        being "product-centric" or "campaign-centric" to
+        "customer-centric". The traditional process of mass marketing is being
+        challenged by a new <i>interactive </i>marketing approach (Blattberg and
+        Deighton 1991; Haeckel 1998) or by one-to-one marketing that aims to profit
+        from relationship building (Peppers et al. 1999; Wind and Rangaswamy 2001; Rust
+        et al. 2004). This trend has been fueled by the rapid development of the
+        Internet and digital technology, which tremendously increase the amount of
+        detailed customer information available and create highly interactive
+        environments for marketing communications (Shugan 2004).
+      </text>
+    </page>
+
+    <page pageNumber="2">
+      <img src="image001.png" alt="Image001" 
+           id="{C7AC5679-FE04-4C76-A9A8-453FEF4ED673}">
+        Figure 1
+      </img>
+
+      <text title="What is customer-centric marketing?" id="{4F577009-8834-45CD-8E13-27AB86333783}">
+        Customer-centric marketing means putting
+        the customer at the center of your marketing strategy.  It emphasizes
+        understanding and satisfying the needs, wants, and resources of individual consumers
+        and customers rather than those of mass markets or market segments. In
+        customer-centric marketing, marketers assess each customer individually and make
+        a determination of whether to serve that customer directly or via a third
+        party. Also, customer-centric marketing determines whether to create an
+        offering that customizes  the product
+        and/or some other elements of the marketing mix or standardize the offering
+        (See Figure 1).
+      </text>
+
+      <text title=" " id="{09A1FEEE-CD1D-4C99-9621-EC9BCC472C5F}">
+        Ideally, the
+        firm should follow the development of each individual customer and develop
+        integrated multi-segment, multi-stage, and multi-channel marketing mix
+        decisions in order to maximize the total customer lifetime profit. 
+      </text>
+
+    </page>
+
+    <page pageNumber="3">
+      <text title=" " id="{E7A125A0-435A-409C-9F35-CEDF8E828DD2}">
+        It is all about introducing the right marketing mix offering to the
+        right customer at the right
+        time through the right channel to satisfy the customer’s evolving demands in
+        order to maximize customer life time value.
+        The objective of customer-centric
+        marketing is to maximize both efficiency and effectiveness simultaneously at a
+        customer level in order to maximize the customer’s life-time profit
+        contribution.
+      </text>
+
+      <text title=" " id="{F40BB58B-CF9E-4A98-AF56-31F17CE4A9C9}">
+        Customer-centric
+        marketing requires a company to track and understand needs, wants, and
+        resources of individual consumers, and make an integrated decision on whether,
+        when, what, and how to serve each individual consumer. The firm’s actions are
+        guided by analysis that seeks to maximize the “effectiveness and efficiency” of
+        its marketing actions. Efficiency entails cost-benefit analysis and seeks to
+        maximize the output-to-input ratio. Effectiveness entails the enhancement of
+        customer loyalty and "share of wallet" during their lifetime. The objective is
+        to maximize each individual consumer’s long-term profit contribution.
+      </text>
+    </page>
+
+    <page pageNumber="4">
+      <text title="Why customer-centric marketing?" id="{279CEDFB-9678-4F53-BDFF-619503C8662B}">
+        The answer to the question "why should we switch to a customer-centric marketing approach?" is
+        an economic one: Because it will increase profits. This will happen for
+        some of the following reasons.
+      </text>
+
+      <text title=" " id="{7D77914E-25CB-4485-B76E-D6762F5C611A}">
+        First, consumer resistance to intrusive marketing is increasing:
+        <li>
+          <ul>68% of consumers agree there are too many ads today</ul>
+        </li>
+      </text>
+    </page>
+  </chapter>
+</book>
+
