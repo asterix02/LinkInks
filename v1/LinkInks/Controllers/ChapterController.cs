@@ -22,6 +22,7 @@ namespace LinkInks.Controllers
         // GET: /Chapter/Read/5
         public ActionResult Read(int id)
         {
+            this.ViewBag.HideFeedbackLink = true;
             return View(new ReadViewModel(_db, id));
         }
 
