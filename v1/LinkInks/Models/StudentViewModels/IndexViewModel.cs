@@ -15,7 +15,7 @@ namespace LinkInks.Models.StudentViewModels
             var myCourses = from course in db.Courses
                             join enrollment in db.Enrollments
                             on course.CourseId equals enrollment.CourseId
-                            where (enrollment.StudentUserName == studentUserName)
+                            where (enrollment.StudentUserName == studentUserName && enrollment.IsPending == false)
                             select new CourseInfo
                             {
                                 Title               = course.Title,
