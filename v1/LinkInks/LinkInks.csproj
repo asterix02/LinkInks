@@ -152,6 +152,9 @@
     <Content Include="Content\Chapter.css" />
     <Content Include="Content\Discussions.css" />
     <Content Include="Content\Home.css" />
+    <Content Include="Content\themes\base\images\book.png" />
+    <Content Include="Content\themes\base\images\book_cover.png" />
+    <Content Include="Content\themes\base\images\book_toc.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -299,6 +302,7 @@
     <Content Include="Views\Shared\DisplayTemplates\QuestionContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Web.config" />
     <None Include="Properties\PublishProfiles\linkinks - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\linkinks - Web Deploy.pubxml" />
     <None Include="User_Data\ravi\Getting Started\demo.webm" />
