@@ -1,0 +1,24 @@
+﻿@model LinkInks.Models.Entities.Book
+
+@{
+    ViewBag.Title       = Model.Title + ": a LinkInks book";
+    ViewBag.HideHeader  = true;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Book</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" />
+        @Html.Hidden("bookId", Model.BookId)
+    </p>
+}
