@@ -81,17 +81,17 @@ namespace LinkInks.Models.ChapterViewModels
             // either the answer-choice template to the user, or the current answered state.
             if (answerState.Answered == true)
             {
-                AddAnsweredDiscussion(module, currentUserName, answerState);
+                AddAnsweredDiscussion(db, module, currentUserName, answerState);
             }
             else
             {
-                AddUnansweredDiscussion(module, currentUserName);
+                AddUnansweredDiscussion(db, module, currentUserName);
             }
         }
 
-        private void AddAnsweredDiscussion(Module module, string currentUserName, AnswerState answerState)
+        private void AddAnsweredDiscussion(UniversityDbContext db, Module module, string currentUserName, AnswerState answerState)
         {
-            QuestionContent questionContent = Store.Instance.GetModuleContent(module) as QuestionContent;
+            QuestionContent questionContent = Store.Instance.GetModuleContent(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Could not locate question module: " + module.ModuleId);
@@ -130,9 +130,9 @@ namespace LinkInks.Models.ChapterViewModels
             module.Discussions.Add(discussion);
         }
 
-        private void AddUnansweredDiscussion(Module module, string currentUserName)
+        private void AddUnansweredDiscussion(UniversityDbContext db, Module module, string currentUserName)
         {
-            QuestionContent questionContent     = Store.Instance.GetModuleContent(module) as QuestionContent;
+            QuestionContent questionContent     = Store.Instance.GetModuleContent(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Could not locate question module: " + module.ModuleId);

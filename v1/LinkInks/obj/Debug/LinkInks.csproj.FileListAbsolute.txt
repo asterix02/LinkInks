@@ -62,7 +62,6 @@ D:\LinkInks\v1\LinkInks\bin\System.Web.WebPages.Deployment.dll
 D:\LinkInks\v1\LinkInks\bin\System.Web.WebPages.dll
 D:\LinkInks\v1\LinkInks\bin\System.Web.WebPages.Razor.dll
 D:\LinkInks\v1\LinkInks\bin\EntityFramework.xml
-D:\LinkInks\v1\LinkInks\bin\Microsoft.Web.Infrastructure.xml
 D:\LinkInks\v1\LinkInks\bin\Microsoft.WindowsAzure.Diagnostics.xml
 D:\LinkInks\v1\LinkInks\bin\System.Web.Mvc.xml
 D:\LinkInks\v1\LinkInks\bin\System.Web.Razor.xml
@@ -73,3 +72,4 @@ D:\LinkInks\v1\LinkInks\bin\System.Web.WebPages.Razor.xml
 D:\LinkInks\v1\LinkInks\obj\Debug\ResolveAssemblyReference.cache
 D:\LinkInks\v1\LinkInks\obj\Debug\LinkInks.dll
 D:\LinkInks\v1\LinkInks\obj\Debug\LinkInks.pdb
+D:\LinkInks\v1\LinkInks\bin\Microsoft.WindowsAzure.Diagnostics.dll

@@ -6,7 +6,7 @@ namespace LinkInks.Models.Entities
 {
     public class Book
     {
-        [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Required]
         public Guid     BookId          { get; set; }
         public string   CoverPhoto      { get; set; }
 

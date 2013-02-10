@@ -11,15 +11,16 @@ namespace LinkInks.Models.CourseViewModels
 {
     public class ControllerHelper
     {
-        public static Guid CreateBook(UniversityDbContext db, string bookRelativeLocation)
+        public static Guid CreateBook(UniversityDbContext db, string bookRelativeUri)
         {
             // Ask the blob store to deserialize the file contents
-            string bookFullPath     = Store.GetFullPath(bookRelativeLocation.Trim(new char[] { ' ', '/', '\\' }));
-            Book deserializedBook   = Store.Instance.GetBookModules(bookFullPath);
+            bookRelativeUri         = bookRelativeUri.Trim(new char[] { ' ', '/', '\\' });
+            Book deserializedBook   = Store.Instance.GetBookModules(bookRelativeUri);
 
             // Use the deserialized data to store the schematized book information in the database
             Book book               = db.Books.Create();
             book.AuthorUserName     = Membership.GetUser().UserName;
+            book.BookId             = deserializedBook.BookId;
             book.Chapters           = new List<Chapter>();
             book.ContentLocation    = Path.GetFileName(deserializedBook.ContentLocation);
             book.CoverPhoto         = Path.GetFileName(deserializedBook.CoverPhoto);
@@ -44,6 +45,7 @@ namespace LinkInks.Models.CourseViewModels
         {
             Chapter chapter         = db.Chapters.Create();
             chapter.BookId          = book.BookId;
+            chapter.ChapterId       = deserializedChapter.ChapterId;
             chapter.ContentLocation = Path.GetFileName(book.ContentLocation);
             chapter.Index           = deserializedChapter.Index;
             chapter.Modules         = new List<Module>();

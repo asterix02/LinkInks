@@ -16,7 +16,7 @@ namespace LinkInks.Models.ChapterViewModels
         {
         }
 
-        public ReadViewModel(UniversityDbContext db, int chapterId)
+        public ReadViewModel(UniversityDbContext db, Guid chapterId)
             : this(db, ControllerHelper.GetLastViewState(db, chapterId))
         {
         }
@@ -50,7 +50,7 @@ namespace LinkInks.Models.ChapterViewModels
 
             // ... next, fetch the content from the blob store
             Store blobStore                         = Store.Instance;
-            Dictionary<int, Page> pages             = blobStore.GetBookPages(chapter.BookId, chapter.GetContentLocationUri(), this.ChapterId, 
+            Dictionary<int, Page> pages             = blobStore.GetBookPages(db, chapter.BookId, chapter.GetContentLocationUri(), this.ChapterId, 
                                                        new List<int>() { this.LeftPageNumber, this.RightPageNumber });
 
             ICollection<Content> leftPageContents   = (pages[this.LeftPageNumber] != null ? pages[this.LeftPageNumber].Contents : new List<Content>());
@@ -84,7 +84,7 @@ namespace LinkInks.Models.ChapterViewModels
         }
 
         public Guid                     BookId              { get; private set; }
-        public int                      ChapterId           { get; private set; }
+        public Guid                     ChapterId           { get; private set; }
         public string                   Title               { get; private set; }
         public int                      Index               { get; private set; }
         public string                   ContentLocation     { get; private set; }

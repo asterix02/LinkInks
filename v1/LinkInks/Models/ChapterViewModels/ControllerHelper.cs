@@ -100,7 +100,7 @@ namespace LinkInks.Models.ChapterViewModels
         {
             UserState userState = GetUserState(db);
             BookViewState bookViewState = userState.GetBookViewState(userState.LastViewedBook);
-            int chapterId = bookViewState.ChapterId;
+            Guid chapterId = bookViewState.ChapterId;
 
             Chapter chapter = db.Chapters.SingleOrDefault(c => c.ChapterId == bookViewState.ChapterId);
             if (chapter == null)
@@ -135,7 +135,7 @@ namespace LinkInks.Models.ChapterViewModels
                 throw new ObjectNotFoundException("Module not found: " + selectedModuleId);
             }
 
-            QuestionContent questionContent = Store.Instance.GetModuleContent(module) as QuestionContent;
+            QuestionContent questionContent = Store.Instance.GetModuleContent(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Question not found in module: " + selectedModuleId);
@@ -172,7 +172,7 @@ namespace LinkInks.Models.ChapterViewModels
             return userState.GetBookViewState(userState.LastViewedBook);
         }
 
-        internal static BookViewState GetLastViewState(UniversityDbContext db, int chapterId)
+        internal static BookViewState GetLastViewState(UniversityDbContext db, Guid chapterId)
         {
             UserState userState = GetUserState(db);
             BookViewState viewState = userState.GetChapterViewState(chapterId);
@@ -193,7 +193,7 @@ namespace LinkInks.Models.ChapterViewModels
             return viewState;
         }
 
-        internal static BookViewState SetLastViewState(UniversityDbContext db, Guid bookId, int chapterId, int pageNumber)
+        internal static BookViewState SetLastViewState(UniversityDbContext db, Guid bookId, Guid chapterId, int pageNumber)
         {
             UserState userState             = GetUserState(db);
             BookViewState bookViewState     = userState.GetBookViewState(bookId);

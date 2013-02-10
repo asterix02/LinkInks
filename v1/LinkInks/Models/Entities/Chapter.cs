@@ -7,7 +7,7 @@ namespace LinkInks.Models.Entities
     public class Chapter
     {
         [Key, Required]
-        public int          ChapterId                   { get; set; }
+        public Guid         ChapterId                   { get; set; }
 
         [ForeignKey("Book")]
         public Guid         BookId                      { get; set; }

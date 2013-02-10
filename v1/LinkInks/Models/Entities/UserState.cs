@@ -43,7 +43,7 @@ namespace LinkInks.Models.Entities
             return null;
         }
 
-        public BookViewState GetChapterViewState(int chapterId)
+        public BookViewState GetChapterViewState(Guid chapterId)
         {
             foreach (var view in this.BookViews)
             {

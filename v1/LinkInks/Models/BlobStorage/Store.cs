@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
-using LinkInks.Models.Entities;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Hosting;
 using System.Web.Security;
+using System.Xml;
+using LinkInks.Models.Entities;
 
 namespace LinkInks.Models.BlobStorage
 {
@@ -24,32 +27,59 @@ namespace LinkInks.Models.BlobStorage
             }
         }
 
+        public static String GetAbsoluteUri(String relativeUri)
+        {
+            // Input:   9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+            // Output:  http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+
+            if (Uri.IsWellFormedUriString(relativeUri, UriKind.Absolute))
+            {
+                return relativeUri;
+            }
+
+            String baseUri = System.Configuration.ConfigurationManager.AppSettings["blobStoreBaseUri"];
+            return baseUri + relativeUri;
+        }
+
         public static String GetAbsoluteUri(Guid bookId, String fileName)
         {
-            try
+            // Input:   9fbc056d-fdb2-4073-93ec-dd163dbf172b, jumpstart_cover.jpg
+            // Output:  http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/jumpstart_cover.jpg
+
+            if (Uri.IsWellFormedUriString(fileName, UriKind.Absolute))
             {
-                Uri u = new Uri(fileName);
-                if (u.IsAbsoluteUri)
-                {
-                    return fileName;
-                }
+                return fileName;
             }
-            catch (Exception e)
-            {
-            }
+
             String baseUri = System.Configuration.ConfigurationManager.AppSettings["blobStoreBaseUri"];
             String relativeUri = bookId.ToString().ToLower() + '/' + fileName;
 
             return baseUri + relativeUri;
         }
 
-        public Dictionary<int, Page> GetBookPages(Guid bookId, string bookUri, int requestedChapterId, IList<int> requestedPageNumbers)
+        public static Guid GetBookIdFromRelativeUri(String bookRelativeUri)
+        {
+            // Input:   9fbc056d-fdb2-4073-93ec-dd163dbf172b/Book.xml
+            // Output:  9fbc056d-fdb2-4073-93ec-dd163dbf172b
+
+            int indexOfSlash    = bookRelativeUri.IndexOf('/');
+            Guid bookId         = Guid.Empty;
+
+            if (Guid.TryParse(bookRelativeUri.Substring(indexOfSlash + 1), out bookId) == false)
+            {
+                throw new BlobStoreException("Could not extract Book ID from relative URI: " + bookRelativeUri);
+            }
+
+            return bookId;
+        }
+
+        public Dictionary<int, Page> GetBookPages(UniversityDbContext db, Guid bookId, string bookUri, Guid requestedChapterId, IList<int> requestedPageNumbers)
         {
             // If not in cache, fetch from disk, and then cache it for future use
             if (!_cachedBooks.ContainsKey(bookUri))
             {
                 // Fetch the book and parse the metadata; bubble up any XML exceptions
-                BookBlob bookBlob = DeserializePages(bookId, bookUri);
+                BookBlob bookBlob = DeserializePages(db, bookId, bookUri);
 
                 // Update cache
                 _cachedBooks.Add(bookUri, bookBlob);
@@ -83,37 +113,39 @@ namespace LinkInks.Models.BlobStorage
             return deserializedPages;
         }
 
-        public Book GetBookModules(string bookUri)
+        public Book GetBookModules(string bookRelativeUri)
         {
-            XmlDocument document = new XmlDocument();
-            document.Load(bookUri);
+            string bookAbsoluteUri      = GetAbsoluteUri(bookRelativeUri);
+            XmlDocument document        = new XmlDocument();
+            document.Load(bookAbsoluteUri);
 
-            XmlNodeList bookNodes = document.GetElementsByTagName(BookTag);
+            XmlNodeList bookNodes       = document.GetElementsByTagName(BookTag);
             if ((bookNodes == null) || (bookNodes.Count != 1))
             {
-                throw new BlobStoreException("Could not locate 'book' tag, or found more than one, in: " + bookUri);
+                throw new BlobStoreException("Could not locate 'book' tag, or found more than one, in: " + bookAbsoluteUri);
             }
 
-            XmlNodeList chapterNodes = bookNodes[0].ChildNodes;
+            XmlNodeList chapterNodes    = bookNodes[0].ChildNodes;
             if ((chapterNodes == null) || (chapterNodes.Count == 0))
             {
-                throw new BlobStoreException("Could not locate 'chapter' tags under 'book', in: " + bookUri);
+                throw new BlobStoreException("Could not locate 'chapter' tags under 'book', in: " + bookAbsoluteUri);
             }
 
             Book book                   = new Book();
-            book.Chapters               = DeserializeChapters(bookUri, chapterNodes);
-            book.ContentLocation        = bookUri;
-            book.CoverPhoto             = ConvertUrl(ReadAttributeString(bookNodes[0], CoverPhotoAttributeName));
+            book.BookId                 = GetBookIdFromRelativeUri(bookRelativeUri);
+            book.Chapters               = DeserializeChapters(bookAbsoluteUri, chapterNodes);
+            book.ContentLocation        = bookAbsoluteUri;
+            book.CoverPhoto             = GetAbsoluteUri(book.BookId, ReadAttributeString(bookNodes[0], CoverPhotoAttributeName));
             book.Title                  = ReadAttributeString(bookNodes[0], BookTitleAttributeName);
 
             return book;
         }
 
-        public Content GetModuleContent(Module module)
+        public Content GetModuleContent(UniversityDbContext db, Module module)
         {
             if (!_cachedContents.ContainsKey(module.ModuleId))
             {
-                DeserializePages(module.BookId, module.Book.ContentLocation);
+                DeserializePages(db, module.BookId, module.Book.ContentLocation);
                 if (!_cachedContents.ContainsKey(module.ModuleId))
                 {
                     throw new BlobStoreException("Could not locate moduleId " + module.ModuleId + " in book: " + module.BookId);
@@ -123,43 +155,7 @@ namespace LinkInks.Models.BlobStorage
             return _cachedContents[module.ModuleId];
         }
 
-        public static string ConvertUrl(string customUrl)
-        {
-            // Ignore HTTP URLs
-            if (customUrl.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return customUrl;
-            }
-
-            // All other URLs must start with the LinkInksUrlPrefix
-            if (!customUrl.StartsWith(LinkInksUrlPrefix, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new NotSupportedException(customUrl + " is not supported; only LinkInks:// URLs are supported");
-            }
-
-            string canonizedUrl = customUrl.Remove(0, LinkInksUrlPrefix.Length).Replace('\\', '/');
-            return String.Format("~{0}/{1}/{2}", UserDataRoot, "ravi"/*Membership.GetUser().UserName*/, canonizedUrl);
-        }
-
-        public static string GetFullPath(string relativePath)
-        {
-            // Ignore HTTP URLs
-            if (relativePath.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return relativePath;
-            }
-
-            // All other URLs must start with the LinkInksUrlPrefix
-            if (!relativePath.StartsWith(LinkInksUrlPrefix, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new NotSupportedException(relativePath + " is not supported; only LinkInks:// URLs are supported");
-            }
-
-            string canonizedUrl = relativePath.Remove(0, LinkInksUrlPrefix.Length).Replace('/', '\\');
-            return String.Format("{0}/{1}/{2}", HostingEnvironment.MapPath(UserDataRoot), "ravi"/*Membership.GetUser().UserName*/, canonizedUrl);
-        }
-
-        private static BookBlob DeserializePages(Guid bookId, string bookUri)
+        private static BookBlob DeserializePages(UniversityDbContext db, Guid bookId, string bookUri)
         {
             XmlDocument document = new XmlDocument();
             document.Load(bookUri);
@@ -176,11 +172,20 @@ namespace LinkInks.Models.BlobStorage
                 throw new BlobStoreException("Could not locate 'chapter' tags under 'book', in: " + bookUri);
             }
 
-            BookBlob bookBlob = new BookBlob();
-            bookBlob.ChapterBlobs = new Dictionary<int, ChapterBlob>();
-            foreach (XmlNode chapterNode in chapterNodes)
+            // Since ChapterIds are not stored in the book's serialized XML, we have to retrieve the IDs from the
+            // database. If they are not present in the database, we have a mismatch between the blob store and 
+            // the database store.
+            var dbChapters = db.Chapters.Where(c => c.BookId == bookId).OrderBy(c => c.Index).ToList();
+            if (dbChapters.Count != chapterNodes.Count)
             {
-                XmlAttribute chapterIdAttribute = chapterNode.Attributes[ChapterIdAttributeName];
+                throw new BlobStoreException("Mismatched chapter count for: " + bookId);
+            }
+
+            BookBlob bookBlob = new BookBlob();
+            bookBlob.ChapterBlobs = new Dictionary<Guid, ChapterBlob>();
+            for (int i = 0; i < chapterNodes.Count; i++)
+            {
+                XmlAttribute chapterIdAttribute = chapterNodes[i].Attributes[ChapterIdAttributeName];
                 if ((chapterIdAttribute == null) || (String.IsNullOrEmpty(chapterIdAttribute.Value)))
                 {
                     throw new BlobStoreException("Could not find 'id' for chapter");
@@ -188,16 +193,15 @@ namespace LinkInks.Models.BlobStorage
 
                 ChapterBlob chapterBlob     = new ChapterBlob();
                 chapterBlob.ChapterPages    = new Dictionary<int, Page>();
-                chapterBlob.PageCount       = chapterNode.ChildNodes.Count;
+                chapterBlob.PageCount       = chapterNodes[i].ChildNodes.Count;
 
-                foreach (XmlNode pageNode in chapterNode.ChildNodes)
+                foreach (XmlNode pageNode in chapterNodes[i].ChildNodes)
                 {
                     Page page = new Page(bookId, pageNode);
                     chapterBlob.ChapterPages.Add(page.PageNumber, page);
                 }
 
-                int chapterId = Int32.Parse(chapterIdAttribute.Value);
-                bookBlob.ChapterBlobs.Add(chapterId, chapterBlob);
+                bookBlob.ChapterBlobs.Add(dbChapters[i].ChapterId, chapterBlob);
             }
 
             return bookBlob;
@@ -211,7 +215,7 @@ namespace LinkInks.Models.BlobStorage
             foreach (XmlNode chapterNode in chapterNodes)
             {
                 Chapter chapter         = new Chapter();
-                chapter.ChapterId       = ReadAttributeInt32(chapterNode, ChapterIdAttributeName);
+                chapter.ChapterId       = Guid.NewGuid();
                 chapter.ContentLocation = bookUri;
                 chapter.Index           = ++chapterIndex;
                 chapter.Modules         = DeserializeModules(bookUri, chapterNode.ChildNodes);
@@ -352,7 +356,7 @@ namespace LinkInks.Models.BlobStorage
 
     public class BookBlob
     {
-        public Dictionary<int, ChapterBlob>         ChapterBlobs    { get; set; }
+        public Dictionary<Guid, ChapterBlob>        ChapterBlobs    { get; set; }
     }
 
     public class ChapterBlob

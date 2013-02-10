@@ -304,6 +304,7 @@
     <None Include="User_Data\ravi\Getting Started\demo.webm" />
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Feedback\FeedbackComplete.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
