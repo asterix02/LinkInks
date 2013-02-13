@@ -22,7 +22,7 @@ namespace LinkInks.Models.CourseViewModels
 
         public void Save(UniversityDbContext db)
         {
-            Guid bookId                  = ControllerHelper.CreateBook(db, this.BookLocation);
+            Guid bookId                 = BookViewModels.ControllerHelper.CreateBook(db, this.BookLocation);
 
             Course course               = db.Courses.Create();
             course.BookId               = bookId;

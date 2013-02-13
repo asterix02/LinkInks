@@ -35,6 +35,67 @@ namespace LinkInks.Controllers
             }
         }
 
+        // GET: /Book/Refresh/5
+        [Authorize(Roles = "Instructor")]
+        [HttpGet]
+        public ActionResult Refresh(Guid id)
+        {
+            Book book = _db.Books.SingleOrDefault(b => b.BookId == id);
+            if (book == null)
+            {
+                throw new ObjectNotFoundException("Book not found: " + id);
+            }
+
+            return View(book);
+        }
+
+        // POST: /Book/Refresh/5
+        [Authorize(Roles = "Instructor")]
+        [HttpPost]
+        public ActionResult Refresh(Guid bookId, FormCollection formValues)
+        {
+            Book book = _db.Books.SingleOrDefault(b => b.BookId == bookId);
+            if (book == null)
+            {
+                throw new ObjectNotFoundException("Book not found: " + bookId);
+            }
+
+            string bookUri = book.ContentLocation;
+            ControllerHelper.DeleteBook(_db, bookId);
+            ControllerHelper.CreateBook(_db, bookUri);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        // GET: /Book/Delete/5
+        [Authorize(Roles = "Instructor")]
+        [HttpGet]
+        public ActionResult Delete(Guid id)
+        {
+            Book book = _db.Books.SingleOrDefault(b => b.BookId == id);
+            if (book == null)
+            {
+                throw new ObjectNotFoundException("Book not found: " + id);
+            }
+
+            return View(book);
+        }
+
+        // POST: /Book/Delete/5
+        [Authorize(Roles = "Instructor")]
+        [HttpPost]
+        public ActionResult Delete(Guid bookId, FormCollection formValues)
+        {
+            Book book = _db.Books.SingleOrDefault(b => b.BookId == bookId);
+            if (book == null)
+            {
+                throw new ObjectNotFoundException("Book not found: " + bookId);
+            }
+
+            ControllerHelper.DeleteBook(_db, bookId);
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: /Book/Contents/5
         public ActionResult Contents(Guid id)
         {

@@ -1,0 +1,26 @@
+﻿@model LinkInks.Models.Entities.Book
+
+@{
+    ViewBag.Title       = Model.Title + ": a LinkInks book";
+    ViewBag.HideHeader  = true;
+}
+
+<h2>Refresh</h2>
+
+<h3>
+    WARNING: Refreshing a book will delete all the discussions that are part of the book.
+    Are you sure you want to continue (pressing the browser's Back button will cancel the operation)?</h3>
+<fieldset>
+    <legend>Book</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" />
+        @Html.Hidden("bookId", Model.BookId)
+    </p>
+}

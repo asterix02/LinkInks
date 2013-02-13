@@ -29,7 +29,10 @@ namespace LinkInks.Models.BlobStorage
 
         public static String GetAbsoluteUri(String relativeUri)
         {
-            // Input:   9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+            // Input 1: 9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+            // Output:  http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+
+            // Input 2: http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
             // Output:  http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
 
             if (Uri.IsWellFormedUriString(relativeUri, UriKind.Absolute))
@@ -65,7 +68,7 @@ namespace LinkInks.Models.BlobStorage
             int indexOfSlash    = bookRelativeUri.IndexOf('/');
             Guid bookId         = Guid.Empty;
 
-            if (Guid.TryParse(bookRelativeUri.Substring(indexOfSlash + 1), out bookId) == false)
+            if (Guid.TryParse(bookRelativeUri.Substring(0, indexOfSlash), out bookId) == false)
             {
                 throw new BlobStoreException("Could not extract Book ID from relative URI: " + bookRelativeUri);
             }
@@ -113,6 +116,34 @@ namespace LinkInks.Models.BlobStorage
             return deserializedPages;
         }
 
+        public void RemoveBookFromCache(string bookUri)
+        {
+            if (_cachedBooks.ContainsKey(bookUri) == false)
+            {
+                return;
+            }
+
+            // Remove any references to the modules (content) within each chapter
+            BookBlob bookBlob = _cachedBooks[bookUri];
+            foreach (var chapterBlob in bookBlob.ChapterBlobs.Values)
+            {
+                foreach (var page in chapterBlob.ChapterPages.Values)
+                {
+                    foreach (var content in page.Contents)
+                    {
+                        _cachedContents.Remove(content.ModuleId);
+                    }
+                }
+
+                // Delete the chapter after clearing the contents
+                chapterBlob.ChapterPages.Clear();
+            }
+
+            // Delete references to the chapters, and then the book itself
+            bookBlob.ChapterBlobs.Clear();
+            _cachedBooks.Remove(bookUri);
+        }
+
         public Book GetBookModules(string bookRelativeUri)
         {
             string bookAbsoluteUri      = GetAbsoluteUri(bookRelativeUri);
@@ -135,7 +166,7 @@ namespace LinkInks.Models.BlobStorage
             book.BookId                 = GetBookIdFromRelativeUri(bookRelativeUri);
             book.Chapters               = DeserializeChapters(bookAbsoluteUri, chapterNodes);
             book.ContentLocation        = bookAbsoluteUri;
-            book.CoverPhoto             = GetAbsoluteUri(book.BookId, ReadAttributeString(bookNodes[0], CoverPhotoAttributeName));
+            book.CoverPhoto             = ReadAttributeString(bookNodes[0], CoverPhotoAttributeName);
             book.Title                  = ReadAttributeString(bookNodes[0], BookTitleAttributeName);
 
             return book;

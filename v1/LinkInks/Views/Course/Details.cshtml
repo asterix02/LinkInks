@@ -28,7 +28,19 @@
             <img class="bookCoverPhotoStyle" src="@imageSource" alt="@book.Title"/>
         }
     </div>
-    @Html.ActionLink(@course.Book.Title, "Read", "Book", new { id = book.BookId }, null)
+    @if (Model.UseInstructorView)
+    {
+        @course.Book.Title
+        <div>
+            @Html.ActionLink("View", "Read", "Book", new { id = book.BookId }, null)        |
+            @Html.ActionLink("Refresh", "Refresh", "Book", new { id = book.BookId }, null)  |
+            @Html.ActionLink("Delete", "Delete", "Book", new { id = book.BookId }, null) 
+        </div>
+    }
+    else
+    {
+        Html.ActionLink(course.Book.Title, "Read", "Book", new { id = book.BookId }, null);
+    }
 
     @if (Model.UseAdministratorView)
     {
