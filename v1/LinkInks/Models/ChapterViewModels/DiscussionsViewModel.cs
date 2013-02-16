@@ -91,7 +91,7 @@ namespace LinkInks.Models.ChapterViewModels
 
         private void AddAnsweredDiscussion(UniversityDbContext db, Module module, string currentUserName, AnswerState answerState)
         {
-            QuestionContent questionContent = Store.Instance.GetModuleContent(db, module) as QuestionContent;
+            QuestionContent questionContent = Store.Instance.GetModuleContentFromCache(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Could not locate question module: " + module.ModuleId);
@@ -132,7 +132,7 @@ namespace LinkInks.Models.ChapterViewModels
 
         private void AddUnansweredDiscussion(UniversityDbContext db, Module module, string currentUserName)
         {
-            QuestionContent questionContent     = Store.Instance.GetModuleContent(db, module) as QuestionContent;
+            QuestionContent questionContent     = Store.Instance.GetModuleContentFromCache(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Could not locate question module: " + module.ModuleId);

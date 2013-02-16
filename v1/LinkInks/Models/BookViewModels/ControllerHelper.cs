@@ -16,11 +16,11 @@ namespace LinkInks.Models.BookViewModels
         {
             // Ask the blob store to deserialize the file contents
             bookRelativeUri         = bookRelativeUri.Trim(new char[] { ' ', '/', '\\' });
-            Book deserializedBook   = Store.Instance.GetBookModules(bookRelativeUri);
+            Book deserializedBook   = Store.Instance.DeserializeBook(bookRelativeUri, Membership.GetUser().UserName);
 
             // Use the deserialized data to store the schematized book information in the database
             Book book               = db.Books.Create();
-            book.AuthorUserName     = Membership.GetUser().UserName;
+            book.AuthorUserName     = deserializedBook.AuthorUserName;
             book.BookId             = deserializedBook.BookId;
             book.Chapters           = new List<Chapter>();
             book.ContentLocation    = deserializedBook.ContentLocation;
@@ -32,7 +32,7 @@ namespace LinkInks.Models.BookViewModels
 
             foreach (var deserializedChapter in deserializedBook.Chapters)
             {
-                Chapter chapter = CreateChapter(db, book, deserializedChapter);
+                Chapter chapter = CreateChapter(db, deserializedChapter);
 
                 book.Chapters.Add(chapter);
                 db.Entry(book).State = EntityState.Modified;
@@ -42,12 +42,12 @@ namespace LinkInks.Models.BookViewModels
             return book.BookId;
         }
 
-        private static Chapter CreateChapter(UniversityDbContext db, Book book, Chapter deserializedChapter)
+        private static Chapter CreateChapter(UniversityDbContext db, Chapter deserializedChapter)
         {
             Chapter chapter         = db.Chapters.Create();
-            chapter.BookId          = book.BookId;
+            chapter.BookId          = deserializedChapter.BookId;
             chapter.ChapterId       = deserializedChapter.ChapterId;
-            chapter.ContentLocation = Path.GetFileName(book.ContentLocation);
+            chapter.ContentLocation = deserializedChapter.ContentLocation;
             chapter.Index           = deserializedChapter.Index;
             chapter.Modules         = new List<Module>();
             chapter.PageCount       = deserializedChapter.PageCount;
@@ -58,7 +58,7 @@ namespace LinkInks.Models.BookViewModels
 
             foreach (var deserializedModule in deserializedChapter.Modules)
             {
-                Module module       = CreateModule(db, book, deserializedModule);
+                Module module       = CreateModule(db, deserializedModule);
                 chapter.Modules.Add(module);
                 db.Entry(chapter).State = EntityState.Modified;
             }
@@ -66,11 +66,11 @@ namespace LinkInks.Models.BookViewModels
             return chapter;
         }
 
-        private static Module CreateModule(UniversityDbContext db, Book book, Module deserializedModule)
+        private static Module CreateModule(UniversityDbContext db, Module deserializedModule)
         {
             Module module           = new Module();
-            module.BookId           = book.BookId;
-            module.ContentLocation  = book.ContentLocation;
+            module.BookId           = deserializedModule.BookId;
+            module.ContentLocation  = deserializedModule.ContentLocation;
             module.Discussions      = new List<Discussion>();
             module.Index            = deserializedModule.Index;
             module.ModuleId         = deserializedModule.ModuleId;

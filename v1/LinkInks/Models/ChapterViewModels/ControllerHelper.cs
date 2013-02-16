@@ -135,7 +135,7 @@ namespace LinkInks.Models.ChapterViewModels
                 throw new ObjectNotFoundException("Module not found: " + selectedModuleId);
             }
 
-            QuestionContent questionContent = Store.Instance.GetModuleContent(db, module) as QuestionContent;
+            QuestionContent questionContent = Store.Instance.GetModuleContentFromCache(db, module) as QuestionContent;
             if (questionContent == null)
             {
                 throw new ObjectNotFoundException("Question not found in module: " + selectedModuleId);

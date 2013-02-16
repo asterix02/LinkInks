@@ -85,7 +85,7 @@ namespace LinkInks.Models.BlobStorage
         private Content CreateLinkContent(Guid bookId, XmlNode node)
         {
             LinkContent content     = new LinkContent();
-            content.Location        = Store.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.LinkSourceAttributeName));
+            content.Location        = ResourceLocator.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.LinkSourceAttributeName));
             content.Caption         = node.InnerText;
 
             return content;
@@ -94,7 +94,7 @@ namespace LinkInks.Models.BlobStorage
         private Content CreatePictureContent(Guid bookId, XmlNode node)
         {
             PictureContent content  = new PictureContent();
-            content.Location        = Store.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.PictureSourceAttributeName));
+            content.Location        = ResourceLocator.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.PictureSourceAttributeName));
             content.Caption         = node.InnerText;
 
             return content;
@@ -103,7 +103,7 @@ namespace LinkInks.Models.BlobStorage
         private Content CreateVideoContent(Guid bookId, XmlNode node)
         {
             VideoContent content    = new VideoContent();
-            content.Location        = Store.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.VideoSourceAttributeName));
+            content.Location        = ResourceLocator.GetAbsoluteUri(bookId, Store.ReadAttributeString(node, Store.VideoSourceAttributeName));
             content.Caption         = node.InnerText;
 
             return content;

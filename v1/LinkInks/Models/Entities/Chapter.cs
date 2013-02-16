@@ -27,10 +27,5 @@ namespace LinkInks.Models.Entities
 
         [Required]
         public virtual ICollection<Module> Modules      { get; set; }
-
-        public string GetContentLocationUri()
-        {
-            return LinkInks.Models.BlobStorage.Store.GetAbsoluteUri(BookId, ContentLocation);
-        }
     }
 }

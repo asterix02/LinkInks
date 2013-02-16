@@ -116,6 +116,7 @@
     <Compile Include="Models\AdministratorViewModels\DetailsViewModel.cs" />
     <Compile Include="Models\AdministratorViewModels\IndexViewModel.cs" />
     <Compile Include="Models\BlobStorage\Page.cs" />
+    <Compile Include="Models\BlobStorage\ResourceLocator.cs" />
     <Compile Include="Models\BookViewModels\ControllerHelper.cs" />
     <Compile Include="Models\ChapterViewModels\ControllerHelper.cs" />
     <Compile Include="Models\ChapterViewModels\DiscussionsViewModel.cs" />

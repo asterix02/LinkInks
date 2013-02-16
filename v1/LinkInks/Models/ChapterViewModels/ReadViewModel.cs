@@ -50,7 +50,7 @@ namespace LinkInks.Models.ChapterViewModels
 
             // ... next, fetch the content from the blob store
             Store blobStore                         = Store.Instance;
-            Dictionary<int, Page> pages             = blobStore.GetBookPages(db, chapter.BookId, chapter.GetContentLocationUri(), this.ChapterId, 
+            Dictionary<int, Page> pages             = blobStore.GetBookPagesFromCache(db, chapter.ContentLocation, this.ChapterId, 
                                                        new List<int>() { this.LeftPageNumber, this.RightPageNumber });
 
             ICollection<Content> leftPageContents   = (pages[this.LeftPageNumber] != null ? pages[this.LeftPageNumber].Contents : new List<Content>());

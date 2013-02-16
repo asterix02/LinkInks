@@ -3,7 +3,7 @@
 @using LinkInks.Models.BlobStorage
 
 @{
-    var linkLocation = Url.Content(Model.Location);
+    var linkLocation = Url.Content(Model.DisplayUri);
 }
 
 <a href="@linkLocation" id="link_@(Model.ModuleId)" class="linkContentStyle">@Model.Caption</a>

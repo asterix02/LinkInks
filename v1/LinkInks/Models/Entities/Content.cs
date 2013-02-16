@@ -40,8 +40,8 @@ namespace LinkInks.Models.Entities
 
     public class TextContent : Content
     {
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string Title         { get; set; }
+        public string Content       { get; set; }
 
         public override ContentType GetContentType()
         {
@@ -51,8 +51,9 @@ namespace LinkInks.Models.Entities
 
     public class VideoContent : Content
     {
-        public string Location { get; set; }
-        public string Caption { get; set; }
+        public string Caption       { get; set; }
+        public string Location      { private get; set; }
+        public string DisplayUri    { get { return ResourceLocator.GetAbsoluteUri(this.Location); } }
 
         public override ContentType GetContentType()
         {
@@ -62,8 +63,9 @@ namespace LinkInks.Models.Entities
 
     public class PictureContent : Content
     {
-        public string Location { get; set; }
-        public string Caption { get; set; }
+        public string Caption       { get; set; }
+        public string Location      { private get; set; }
+        public string DisplayUri    { get { return ResourceLocator.GetAbsoluteUri(this.Location); } }
 
         public override ContentType GetContentType()
         {
@@ -73,8 +75,9 @@ namespace LinkInks.Models.Entities
 
     public class LinkContent : Content
     {
-        public string Location { get; set; }
-        public string Caption { get; set; }
+        public string Caption       { get; set; }
+        public string Location      { private get; set; }
+        public string DisplayUri    { get { return ResourceLocator.GetAbsoluteUri(this.Location); } }
 
         public override ContentType GetContentType()
         {
@@ -84,10 +87,10 @@ namespace LinkInks.Models.Entities
 
     public class QuestionContent : Content
     {
-        public string QuestionText { get; set; }
+        public string QuestionText  { get; set; }
         public ICollection<string> AnswerChoices { get; set; }
         public string CorrectAnswer { get; set; }
-        public int Points { get; set; }
+        public int Points           { get; set; }
 
         public override ContentType GetContentType()
         {

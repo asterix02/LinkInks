@@ -25,7 +25,7 @@
                 <img class="bookCover" src="@stockCoverPhoto" alt="@course.Book.Title"/>
                 @if (!String.IsNullOrEmpty(course.Book.CoverPhoto))
                 {
-                    var imageSource = LinkInks.Models.BlobStorage.Store.GetAbsoluteUri(course.Book.BookId, course.Book.CoverPhoto);                    
+                    var imageSource = LinkInks.Models.BlobStorage.ResourceLocator.GetAbsoluteUri(course.Book.BookId, course.Book.CoverPhoto);                    
                     <img class="bookCoverPhotoStyle" src="@imageSource" alt="@course.Book.Title"/>
                 }
             </div>
