@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -32,11 +33,14 @@ namespace LinkInks.Models.Entities
 
         public BookViewState GetBookViewState(Guid bookId)
         {
-            foreach (var view in this.BookViews)
+            if (this.BookViews != null)
             {
-                if (view.BookId == bookId)
+                foreach (var view in this.BookViews)
                 {
-                    return view;
+                    if (view.BookId == bookId)
+                    {
+                        return view;
+                    }
                 }
             }
 
@@ -45,15 +49,38 @@ namespace LinkInks.Models.Entities
 
         public BookViewState GetChapterViewState(Guid chapterId)
         {
-            foreach (var view in this.BookViews)
+            if (this.BookViews != null)
             {
-                if (view.ChapterId == chapterId)
+                foreach (var view in this.BookViews)
                 {
-                    return view;
+                    if (view.ChapterId == chapterId)
+                    {
+                        return view;
+                    }
                 }
             }
 
             return null;
+        }
+
+        public void ResetViewState(UniversityDbContext db, Guid bookId)
+        {
+            bool shouldUpdateDb = false;
+
+            BookViewState storedViewState = GetBookViewState(bookId);
+            if (storedViewState != null)
+            {
+                this.BookViews.Remove(storedViewState);
+
+                db.Entry(storedViewState).State = EntityState.Deleted;
+                db.Entry(this.BookViews).State  = EntityState.Modified;
+                shouldUpdateDb                  = true;
+            }
+
+            if (shouldUpdateDb)
+            {
+                db.SaveChanges();
+            }
         }
 
         public void SetViewState(UniversityDbContext db, BookViewState bookViewState)

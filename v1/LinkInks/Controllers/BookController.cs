@@ -7,6 +7,7 @@ using System.Web.Security;
 using LinkInks.Models;
 using LinkInks.Models.Entities;
 using LinkInks.Models.BookViewModels;
+using LinkInks.Models.BlobStorage;
 
 namespace LinkInks.Controllers
 {
@@ -54,16 +55,7 @@ namespace LinkInks.Controllers
         [HttpPost]
         public ActionResult Refresh(Guid bookId, FormCollection formValues)
         {
-            Book book = _db.Books.SingleOrDefault(b => b.BookId == bookId);
-            if (book == null)
-            {
-                throw new ObjectNotFoundException("Book not found: " + bookId);
-            }
-
-            string bookUri = book.ContentLocation;
-            ControllerHelper.DeleteBook(_db, bookId);
-            ControllerHelper.CreateBook(_db, bookUri);
-
+            ControllerHelper.RefreshBook(_db, bookId);
             return RedirectToAction("Index", "Home");
         }
 

@@ -27,7 +27,8 @@
             <section id="tocContents">
                 @if ((Model.Chapters != null) && (Model.Chapters.Count > 0))
                 {
-                    @Html.DisplayFor(editChapters => Model.Chapters)
+                    var chapters = Model.Chapters.OrderBy(c => c.Index);
+                    @Html.DisplayFor(editChapters => chapters)
                 }
                 else
                 {

@@ -10,6 +10,9 @@
 <h3>
     WARNING: Refreshing a book will delete all the discussions that are part of the book.
     Are you sure you want to continue (pressing the browser's Back button will cancel the operation)?</h3>
+
+<h3><b>Note:</b>This operation will take awhile, so please do not press the Back button until it completes.</h3>
+
 <fieldset>
     <legend>Book</legend>
 
@@ -20,7 +23,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" />
+        <input type="submit" value="Refresh" />
         @Html.Hidden("bookId", Model.BookId)
     </p>
 }

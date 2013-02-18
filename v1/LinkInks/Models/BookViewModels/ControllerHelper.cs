@@ -113,8 +113,20 @@ namespace LinkInks.Models.BookViewModels
                 db.SaveChanges();
             }
 
-            // Step 2: Delete the book and its associated state from the database
+            // Step 2: Delete the book's state from the database
             DeleteBookViewState(db, bookId);
+
+            // Step 3: Delete the book from the course
+            Course course = db.Courses.Include(c => c.Enrollments).SingleOrDefault(c => c.BookId == bookId);
+            if (course != null)
+            {
+                course.BookId           = null;
+
+                db.Entry(course).State  = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            // Step 4: Delete the book
             db.Entry(book).State = EntityState.Deleted;
             db.SaveChanges();
         }
@@ -200,10 +212,23 @@ namespace LinkInks.Models.BookViewModels
 
         private static void DeleteBookViewState(UniversityDbContext db, Guid bookId)
         {
+            var userStates = db.UserStates.Include(u => u.BookViews).Where(u => u.LastViewedBook == bookId);
+            foreach (var userState in userStates)
+            {
+                userState.ResetViewState(db, bookId);
+            }
+
+            bool shouldUpdateDb = false;
             var bookViewStates = db.BookViewStates.Where(b => b.BookId == bookId);
             foreach (var bookViewState in bookViewStates)
             {
                 db.Entry(bookViewState).State = EntityState.Deleted;
+                shouldUpdateDb = true;
+            }
+
+            if (shouldUpdateDb)
+            {
+                db.SaveChanges();
             }
         }
 
@@ -218,6 +243,34 @@ namespace LinkInks.Models.BookViewModels
             }
 
             return viewState;
+        }
+
+        public static void RefreshBook(UniversityDbContext db, Guid bookId)
+        {
+            Book book = db.Books.SingleOrDefault(b => b.BookId == bookId);
+            if (book == null)
+            {
+                throw new ObjectNotFoundException("Book not found: " + bookId);
+            }
+
+            // Store the original book's details
+            string relativeUri = ResourceLocator.GetRelativeUri(new Uri(book.ContentLocation, UriKind.RelativeOrAbsolute));
+            Course course = db.Courses.SingleOrDefault(c => c.BookId == bookId);
+
+            // Delete the original book...
+            DeleteBook(db, bookId);
+
+            // ... and then recreate it
+            Guid newBookId = CreateBook(db, relativeUri);
+
+            // Re-add this book to the course
+            if (course != null)
+            {
+                course.BookId = newBookId;
+
+                db.Entry(course).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -60,5 +60,23 @@ namespace LinkInks.Models.BlobStorage
 
             return bookId;
         }
+
+        public static String GetRelativeUri(Uri resourceUri)
+        {
+            // Input 1: http://linkinks.blob.core.windows.net/9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+            // Output:  9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+
+            // Input 2: 9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+            // Output:  9fbc056d-fdb2-4073-93ec-dd163dbf172b/book.xml
+
+            if (resourceUri.IsAbsoluteUri)
+            {
+                return resourceUri.AbsolutePath;
+            }
+            else
+            {
+                return resourceUri.ToString();
+            }
+        }
     }
 }

@@ -18,8 +18,9 @@ namespace LinkInks.Models.Entities
         [Required]
         public string   InstructorUserName      { get; set; }
 
-        public Guid     BookId                  { get; set; }
-        public Book     Book                    { get; set; }
+        [ForeignKey("Book")]
+        public Guid?    BookId                  { get; set; }
+        public virtual Book Book                { get; set; }
 
         [Required]
         public virtual  ICollection<Enrollment> Enrollments { get; set; }
