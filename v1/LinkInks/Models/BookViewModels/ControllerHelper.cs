@@ -115,6 +115,7 @@ namespace LinkInks.Models.BookViewModels
 
             // Step 2: Delete the book's state from the database
             DeleteBookViewState(db, bookId);
+            db.SaveChanges();
 
             // Step 3: Delete the book from the course
             Course course = db.Courses.Include(c => c.Enrollments).SingleOrDefault(c => c.BookId == bookId);
@@ -212,11 +213,7 @@ namespace LinkInks.Models.BookViewModels
 
         private static void DeleteBookViewState(UniversityDbContext db, Guid bookId)
         {
-            var userStates = db.UserStates.Include(u => u.BookViews).Where(u => u.LastViewedBook == bookId);
-            foreach (var userState in userStates)
-            {
-                userState.ResetViewState(db, bookId);
-            }
+            UserState.ResetViewStatesForUsers(db, bookId);
 
             bool shouldUpdateDb = false;
             var bookViewStates = db.BookViewStates.Where(b => b.BookId == bookId);

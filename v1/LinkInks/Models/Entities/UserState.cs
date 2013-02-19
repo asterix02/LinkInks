@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Security;
 
 namespace LinkInks.Models.Entities
@@ -63,24 +64,21 @@ namespace LinkInks.Models.Entities
             return null;
         }
 
-        public void ResetViewState(UniversityDbContext db, Guid bookId)
+        public static void ResetViewStatesForUsers(UniversityDbContext db, Guid bookId)
         {
-            bool shouldUpdateDb = false;
-
-            BookViewState storedViewState = GetBookViewState(bookId);
-            if (storedViewState != null)
+            var userStates = db.UserStates.Include(u => u.BookViews).Where(u => u.LastViewedBook == bookId);
+            foreach (var userState in userStates)
             {
-                this.BookViews.Remove(storedViewState);
+                BookViewState storedViewState = userState.GetBookViewState(bookId);
+                if (storedViewState != null)
+                {
+                    userState.BookViews.Remove(storedViewState);
 
-                db.Entry(storedViewState).State = EntityState.Deleted;
-                db.Entry(this.BookViews).State  = EntityState.Modified;
-                shouldUpdateDb                  = true;
+                    db.Entry(storedViewState).State = EntityState.Deleted;
+                    db.Entry(userState).State       = EntityState.Modified;
+                }
             }
-
-            if (shouldUpdateDb)
-            {
-                db.SaveChanges();
-            }
+            db.SaveChanges();
         }
 
         public void SetViewState(UniversityDbContext db, BookViewState bookViewState)
